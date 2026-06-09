@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K-Star — Momentum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/tokens.css">
+<style>
+:root{
+  --accent:#0ACBFF; --accent-ink:#04263a;
+  --paper:#F4F7FA; --paper-2:#EAF0F6; --card:#ffffff;
+  --ink:#0A1E30; --muted:#5A7184; --line:#E0E8F0;
+  --font-display:"Bricolage Grotesque",system-ui,sans-serif;
+  --font-body:"Hanken Grotesk",system-ui,sans-serif;
+  --pad:clamp(20px,5vw,72px);
+}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.6}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:var(--pad)}
+.eyebrow{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--accent-ink);display:inline-flex;align-items:center;gap:.6em}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--accent)}
+h1,h2,h3{font-family:var(--font-display);margin:0;line-height:1.02;letter-spacing:-.02em;font-weight:700}
+.cyan{color:var(--accent)}
+p{margin:0}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:.6em;font-weight:600;font-family:var(--font-body);
+  border-radius:999px;padding:.92em 1.5em;font-size:15px;transition:transform .25s,box-shadow .25s,background .25s;white-space:nowrap}
+.btn:hover{transform:translateY(-2px)}
+.btn--accent{background:var(--accent);color:var(--accent-ink);box-shadow:0 12px 30px -12px color-mix(in srgb,var(--accent) 80%,#000)}
+.btn--accent:hover{box-shadow:0 18px 40px -12px color-mix(in srgb,var(--accent) 70%,#000)}
+.btn--navy{background:var(--navy-900);color:#fff}
+.btn--ghost{border:1.5px solid var(--line);color:var(--ink)}
+.btn--ghost:hover{border-color:var(--accent);color:var(--accent-ink)}
+.btn .arr{width:26px;height:26px;border-radius:50%;background:color-mix(in srgb,var(--accent-ink) 12%,transparent);
+  display:grid;place-items:center;margin-right:-.4em}
+.btn--accent .arr{background:rgba(4,38,58,.16)}
+.btn--navy .arr{background:rgba(255,255,255,.16)}
+.btn .arr svg{width:13px;height:13px}
+
+/* header */
+[data-header]{position:sticky;top:0;z-index:100;transition:.3s}
+.nav{display:flex;align-items:center;gap:28px;padding:18px 0;transition:.3s}
+[data-header].is-stuck{background:color-mix(in srgb,var(--paper) 86%,transparent);backdrop-filter:blur(14px);
+  box-shadow:0 1px 0 var(--line)}
+[data-header].is-stuck .nav{padding:11px 0}
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--font-display);font-weight:800;
+  letter-spacing:.04em;font-size:19px}
+.brand img{height:34px;width:auto}
+.nav__links{display:flex;gap:26px;margin-left:14px}
+.nav__links a{font-weight:600;font-size:15px;color:var(--muted);position:relative;padding:4px 0}
+.nav__links a:hover{color:var(--ink)}
+.nav__links a::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--accent);transition:.25s}
+.nav__links a:hover::after{width:100%}
+.nav__cta{margin-left:auto;display:flex;gap:12px;align-items:center}
+.burger{display:none}
+
+/* hero */
+.hero{position:relative;padding-top:18px}
+.hero__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(44px,6.6vw,92px);font-weight:800;letter-spacing:-.035em}
+.hero h1 .l2{display:block;color:var(--accent);
+  -webkit-text-stroke:0;text-shadow:0 0 0}
+.hero__sub{font-size:19px;color:var(--muted);max-width:30ch;margin:22px 0 30px}
+.hero__actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.proof{display:flex;align-items:center;gap:12px;margin-top:30px}
+.avatars{display:flex}
+.avatars .ph{width:40px;height:40px;border-radius:50%;border:2px solid var(--paper);margin-left:-10px;font-size:0}
+.avatars .ph:first-child{margin-left:0}
+.proof span{font-size:14px;color:var(--muted);line-height:1.35}
+.proof b{color:var(--ink)}
+.hero__media{position:relative}
+.hero__photo{position:relative;border-radius:26px;overflow:hidden;aspect-ratio:4/4.5;
+  box-shadow:0 40px 90px -40px rgba(8,43,74,.45)}
+.hero__photo .hslide{position:absolute;inset:0;opacity:0;transition:opacity .9s ease;transform:scale(1.02)}
+.hero__photo .hslide.is-active{opacity:1}
+.blob{position:absolute;border-radius:50%;filter:blur(2px);z-index:-1}
+.blob--1{width:340px;height:340px;right:-40px;top:-30px;
+  background:radial-gradient(circle at 30% 30%,color-mix(in srgb,var(--accent) 40%,#fff),transparent 70%)}
+.hero__dots{position:absolute;left:20px;bottom:18px;display:flex;gap:8px;z-index:3}
+.hdot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.5);transition:.3s}
+.hdot.is-active{background:var(--accent);width:24px;border-radius:5px}
+
+/* floating schedule card */
+.sched{position:absolute;right:-26px;bottom:34px;width:288px;background:var(--card);
+  border-radius:18px;padding:18px;box-shadow:0 30px 70px -24px rgba(8,43,74,.5);z-index:4}
+.sched__top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.sched__top b{font-family:var(--font-display);font-size:15px}
+.sched__live{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.1em;color:var(--accent-ink);
+  background:color-mix(in srgb,var(--accent) 22%,#fff);padding:3px 8px;border-radius:6px}
+.srow{display:flex;align-items:center;gap:11px;padding:9px;border-radius:11px;transition:.2s;cursor:pointer;border:1px solid transparent}
+.srow:hover{background:var(--paper);border-color:var(--line)}
+.srow .tk{font-family:"Space Mono",monospace;font-size:12px;color:var(--muted);width:52px;flex:none}
+.srow .nm{font-weight:600;font-size:14px;flex:1}
+.srow .go{width:26px;height:26px;border-radius:50%;background:var(--navy-900);color:#fff;display:grid;place-items:center;flex:none;transition:.2s}
+.srow:hover .go{background:var(--accent);color:var(--accent-ink)}
+.srow .go svg{width:12px;height:12px}
+
+/* section heads */
+.shead{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:38px}
+.shead h2{font-size:clamp(30px,4vw,52px)}
+.section{padding:clamp(64px,9vw,118px) 0}
+
+/* trial band */
+.trial{background:var(--navy-900);color:#fff;border-radius:28px;padding:clamp(28px,4vw,46px);
+  display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;align-items:center;position:relative;overflow:hidden}
+.trial::after{content:"";position:absolute;width:360px;height:360px;right:-120px;top:-120px;border-radius:50%;
+  background:radial-gradient(circle,color-mix(in srgb,var(--accent) 30%,transparent),transparent 70%)}
+.trial h2{font-size:clamp(26px,3vw,40px);color:#fff}
+.trial p{color:#A9C2D6;margin-top:12px}
+.tform{display:grid;grid-template-columns:1fr 1fr;gap:14px;position:relative;z-index:1}
+.tform .full{grid-column:1/-1}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#7FA0B8}
+.field input,.field select{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);color:#fff;
+  border-radius:11px;padding:13px 14px;font:inherit;font-size:15px;transition:.2s}
+.field input::placeholder{color:#6E8CA3}
+.field input:focus,.field select:focus{outline:none;border-color:var(--accent);background:rgba(10,203,255,.07)}
+.field select{appearance:none}
+.tform__done{grid-column:1/-1;display:flex;align-items:center;gap:14px;color:#fff}
+.tform__done .ic{width:46px;height:46px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;flex:none}
+
+/* about */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,72px);align-items:center}
+.about h2{font-size:clamp(32px,4.4vw,58px);margin:14px 0 6px}
+.about .lead{font-size:20px;color:var(--accent-ink);font-weight:600;margin-bottom:18px}
+.about p.body{color:var(--muted);margin-bottom:26px}
+.about__media{position:relative}
+.about__media .ph{border-radius:20px;aspect-ratio:1/1}
+.about__cap{position:absolute;left:18px;bottom:18px;right:18px;background:color-mix(in srgb,var(--navy-900) 88%,transparent);
+  backdrop-filter:blur(6px);color:#fff;padding:16px 18px;border-radius:14px;font-family:var(--font-display);
+  font-weight:600;font-size:15px;line-height:1.3}
+.founders{display:flex;gap:18px;margin-top:24px}
+.founder{display:flex;align-items:center;gap:11px}
+.founder .ph{width:48px;height:48px;border-radius:50%;font-size:0;flex:none}
+.founder b{font-size:14px;display:block}.founder span{font-size:12px;color:var(--muted)}
+
+/* programs */
+.progs{background:var(--navy-900);color:#fff;border-radius:32px;padding:clamp(34px,5vw,68px) var(--pad)}
+.progs .wrap{padding:0}
+.progs .eyebrow{color:var(--cyan-200)}
+.progs h2{color:#fff}
+.progs .shead p{color:#9DB8CC;max-width:38ch}
+.seg{display:inline-flex;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:5px}
+.seg button{padding:9px 16px;border-radius:8px;font-weight:600;font-size:14px;color:#B9CFE0;transition:.2s}
+.seg button.is-active{background:var(--accent);color:var(--accent-ink)}
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:36px}
+.pcard{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:3/4.1;display:flex;flex-direction:column;
+  justify-content:flex-end;color:#fff;transition:transform .35s}
+.pcard .ph{position:absolute;inset:0}
+.pcard::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(6,24,40,.92) 8%,rgba(6,24,40,.1) 60%)}
+.pcard__body{position:relative;z-index:2;padding:20px}
+.pcard:hover{transform:translateY(-6px)}
+.pcard .ploc{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.1em;color:var(--cyan-200);text-transform:uppercase}
+.pcard h3{font-size:21px;margin:6px 0 0;color:#fff}
+.pcard .plink{display:inline-flex;align-items:center;gap:7px;margin-top:14px;font-weight:600;font-size:13px;
+  color:#fff;opacity:0;transform:translateY(6px);transition:.3s}
+.pcard:hover .plink{opacity:1;transform:none}
+.pcard.is-feature{grid-column:span 1;background:linear-gradient(150deg,var(--navy-700),var(--navy-900))}
+.pcard.is-feature::after{display:none}
+
+/* credibility strip */
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:20px;
+  overflow:hidden;background:var(--card)}
+.strip__i{padding:26px 24px;border-right:1px solid var(--line)}
+.strip__i:last-child{border-right:0}
+.strip__i .k{font-family:var(--font-display);font-weight:800;font-size:clamp(26px,3vw,40px);letter-spacing:-.02em}
+.strip__i .k .cyan{font-weight:800}
+.strip__i .t{font-size:13px;color:var(--muted);margin-top:4px}
+
+/* stories carousel */
+.crow{position:relative}
+.ctrack{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(280px,1fr);gap:20px;overflow-x:auto;
+  scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:none}
+.ctrack::-webkit-scrollbar{display:none}
+@media(min-width:900px){.ctrack{grid-auto-columns:minmax(0,1fr);grid-template-columns:repeat(4,1fr)}}
+.story{scroll-snap-align:start;border-radius:18px;overflow:hidden;background:var(--card);border:1px solid var(--line);
+  transition:.3s;cursor:pointer}
+.story:hover{box-shadow:0 24px 50px -24px rgba(8,43,74,.32);transform:translateY(-4px)}
+.story .ph{aspect-ratio:4/3.4}
+.story__b{padding:18px}
+.story__tag{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink);
+  background:color-mix(in srgb,var(--accent) 16%,#fff);padding:3px 8px;border-radius:6px;display:inline-block}
+.story h3{font-size:17px;margin:12px 0 8px;line-height:1.2}
+.story .by{font-size:13px;color:var(--muted)}
+.cnav{display:flex;gap:10px}
+.cbtn{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;transition:.2s;background:var(--card)}
+.cbtn:hover{border-color:var(--accent);background:var(--accent);color:var(--accent-ink)}
+.cbtn svg{width:16px;height:16px}
+[data-dots]{display:flex;gap:7px;justify-content:center;margin-top:24px}
+.kdot{width:8px;height:8px;border-radius:50%;background:var(--line);transition:.3s}
+.kdot.is-active{background:var(--accent);width:22px;border-radius:4px}
+
+/* products */
+.prods{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.prod{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card);transition:.3s}
+.prod:hover{transform:translateY(-4px);box-shadow:0 24px 50px -26px rgba(8,43,74,.3)}
+.prod .ph{aspect-ratio:1/1}
+.prod__b{padding:16px}
+.prod .cat{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.prod h3{font-size:15px;margin:7px 0 10px;line-height:1.25}
+.prod__row{display:flex;justify-content:space-between;align-items:center}
+.prod .price{font-family:var(--font-display);font-weight:700;font-size:18px}
+.prod .add{width:34px;height:34px;border-radius:9px;background:var(--paper);display:grid;place-items:center;transition:.2s}
+.prod:hover .add{background:var(--accent);color:var(--accent-ink)}
+
+/* reviews */
+.revs{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.rev{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
+.stars{color:var(--accent);letter-spacing:2px;font-size:15px}
+.rev p{color:var(--ink);margin:14px 0 18px;font-size:15px;line-height:1.55}
+.rev__by{display:flex;align-items:center;gap:11px}
+.rev__by .ph{width:42px;height:42px;border-radius:50%;font-size:0;flex:none}
+.rev__by b{font-size:14px;display:block}.rev__by span{font-size:12px;color:var(--muted)}
+
+/* gallery */
+.gal__tabs{display:inline-flex;gap:6px;background:var(--paper-2);padding:5px;border-radius:12px;margin-bottom:26px}
+.gal__tabs button{padding:9px 18px;border-radius:8px;font-weight:600;font-size:14px;color:var(--muted);transition:.2s}
+.gal__tabs button.is-active{background:var(--card);color:var(--ink);box-shadow:0 2px 8px -3px rgba(8,43,74,.25)}
+.collage{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:14px}
+.collage .ph{border-radius:14px;width:100%;height:100%}
+.collage .tall{grid-row:span 2}.collage .wide{grid-column:span 2}
+
+/* contact */
+.contact{background:linear-gradient(160deg,var(--navy-800),var(--navy-900));color:#fff;border-radius:32px;
+  padding:clamp(34px,5vw,64px);display:grid;grid-template-columns:1fr 1fr;gap:48px;position:relative;overflow:hidden}
+.contact::before{content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(135deg,rgba(255,255,255,.03) 0 1px,transparent 1px 22px);pointer-events:none}
+.contact h2{color:#fff;font-size:clamp(28px,3.4vw,46px)}
+.contact .sub{color:#9DB8CC;margin:14px 0 0;max-width:34ch}
+.contact .badge{margin-top:34px;display:inline-flex;align-items:center;gap:12px;background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.14);padding:12px 16px;border-radius:14px}
+.contact .badge img{height:30px}
+.contact .badge b{font-family:var(--font-display);font-size:14px}.contact .badge span{font-size:12px;color:#8FAAC0}
+
+/* footer */
+.foot{padding:70px 0 40px}
+.foot__grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.4fr;gap:34px}
+.foot h4{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 16px}
+.foot a,.foot li{color:var(--ink);font-size:14px;line-height:2.1;list-style:none}
+.foot ul{margin:0;padding:0}
+.foot a:hover{color:var(--accent-ink)}
+.foot__brand .brand{margin-bottom:14px}
+.foot__brand p{color:var(--muted);font-size:14px;max-width:30ch}
+.sub-form{display:flex;gap:8px;margin-top:12px}
+.sub-form input{flex:1;border:1px solid var(--line);border-radius:10px;padding:11px 13px;font:inherit;font-size:14px}
+.sub-form input:focus{outline:none;border-color:var(--accent)}
+.foot__bottom{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;
+  border-top:1px solid var(--line);color:var(--muted);font-size:13px;flex-wrap:wrap;gap:16px}
+.socials{display:flex;gap:10px}
+.socials a{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:.2s}
+.socials a:hover{border-color:var(--accent);background:var(--accent);color:var(--accent-ink)}
+.socials svg{width:15px;height:15px}
+
+/* divider — stronger full-width section rhythm (from refs 2 & 3) */
+.div{height:1px;background:var(--line);margin:0}
+.section--bordered{border-top:1px solid var(--line)}
+
+/* marquee strip (ref 3, in Momentum cyan) */
+.marq{background:var(--accent);color:var(--accent-ink);overflow:hidden;padding:14px 0;
+  border-block:1px solid color-mix(in srgb,var(--accent-ink) 14%,transparent)}
+.marq__t{display:inline-flex;white-space:nowrap;font-family:var(--font-display);font-weight:800;
+  font-size:clamp(16px,1.8vw,20px);letter-spacing:-.01em;animation:scroll 30s linear infinite}
+.marq__t b{display:inline-flex;align-items:center;gap:30px;padding-right:30px}
+.marq i{font-style:normal;opacity:.5}
+@keyframes scroll{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.marq__t{animation:none}}
+
+/* big centered statement (ref 3) */
+.statement{text-align:center;max-width:1000px;margin:0 auto}
+.statement h2{font-size:clamp(34px,5.6vw,80px);font-weight:800;letter-spacing:-.035em;line-height:1}
+.statement h2 .mk{position:relative;color:var(--accent-ink);white-space:nowrap}
+.statement h2 .mk::after{content:"";position:absolute;left:-.04em;right:-.04em;bottom:.08em;height:.34em;
+  background:var(--accent);opacity:.45;z-index:-1;border-radius:3px}
+.statement .lead{font-size:clamp(18px,2vw,21px);color:var(--muted);max-width:64ch;margin:28px auto 0}
+.statement .founders{justify-content:center;margin-top:30px}
+
+/* editorial program rows (ref 2) */
+.prow{display:grid;grid-template-columns:64px 1fr auto auto;align-items:center;gap:28px;
+  padding:30px 0;border-top:1px solid var(--line);cursor:pointer;position:relative;transition:padding .4s,background .3s}
+.prow:last-of-type{border-bottom:1px solid var(--line)}
+.prow .idx{font-family:"Space Mono",monospace;font-size:14px;color:var(--muted)}
+.prow .nm{font-family:var(--font-display);font-size:clamp(26px,4.4vw,54px);font-weight:700;
+  letter-spacing:-.025em;line-height:1;transition:.4s}
+.prow .meta{font-size:14px;color:var(--muted);text-align:right;line-height:1.4}
+.prow .av{width:50px;height:50px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;transition:.4s}
+.prow .av svg{width:18px;height:18px}
+.prow:hover{padding-inline:20px;background:var(--card)}
+.prow:hover .nm{color:var(--accent-ink);transform:translateX(4px)}
+.prow:hover .av{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.prow .peek{position:absolute;right:108px;top:50%;transform:translateY(-50%) scale(.92);width:172px;height:120px;
+  border-radius:14px;overflow:hidden;opacity:0;pointer-events:none;transition:.4s;
+  box-shadow:0 24px 50px -20px rgba(8,43,74,.5);z-index:5}
+.prow:hover .peek{opacity:1;transform:translateY(-50%) scale(1)}
+.prow .peek .ph{position:absolute;inset:0}
+.passgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:34px}
+.pass{border:1px solid var(--line);border-radius:18px;padding:26px;background:var(--card);transition:.3s}
+.pass:hover{transform:translateY(-5px);box-shadow:0 24px 50px -26px rgba(8,43,74,.3)}
+.pass .pt{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.pass .pp{font-family:var(--font-display);font-weight:800;font-size:46px;margin:12px 0 6px;letter-spacing:-.02em}
+.pass .pp span{font-size:16px;color:var(--muted);font-weight:600}
+.pass .pd{font-size:14px;color:var(--muted)}
+.pass.hot{background:var(--navy-900);border-color:var(--navy-900);color:#fff}
+.pass.hot .pt{color:var(--cyan-200)}.pass.hot .pp{color:#fff}.pass.hot .pd{color:#9DB8CC}
+
+/* featured product selector (ref 3) */
+.feat{display:grid;grid-template-columns:1fr 1.1fr;gap:0;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:var(--card)}
+.feat__media{position:relative;min-height:440px}
+.feat__media .ph{position:absolute;inset:0}
+.feat__tag{position:absolute;top:18px;left:18px;z-index:2;background:var(--accent);color:var(--accent-ink);
+  font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:8px;font-weight:700}
+.feat__panel{padding:clamp(28px,3.4vw,46px);display:flex;flex-direction:column;justify-content:center}
+.feat__panel h3{font-size:clamp(26px,3vw,42px);margin:8px 0 0}
+.feat__panel p{color:var(--muted);margin:14px 0 22px}
+.optrow{display:flex;justify-content:space-between;align-items:center;border:1.5px solid var(--line);border-radius:13px;
+  padding:14px 16px;margin-bottom:10px;cursor:pointer;transition:.2s;font-weight:600}
+.optrow:hover{border-color:color-mix(in srgb,var(--accent) 60%,var(--line))}
+.optrow.on{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 8%,transparent)}
+.optrow .lo{display:flex;align-items:center;gap:12px}
+.optrow .rad{width:20px;height:20px;border:2px solid var(--line);border-radius:50%;display:grid;place-items:center;transition:.2s}
+.optrow.on .rad{border-color:var(--accent)}
+.optrow.on .rad::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.optrow .pr{font-family:var(--font-display);font-weight:700}
+
+/* feature-quote reviews (ref 2) */
+.fquote{display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(36px,5vw,64px);align-items:center}
+.fquote .q{font-family:var(--font-display);font-size:clamp(26px,3.4vw,44px);font-weight:600;line-height:1.16;letter-spacing:-.02em}
+.fquote .q .cyan{color:var(--accent-ink)}
+.qby{display:flex;align-items:center;gap:14px;margin-top:32px}
+.qby .ph{width:56px;height:56px;border-radius:50%;font-size:0;flex:none}
+.qby b{font-size:15px;display:block}.qby span{font-size:13px;color:var(--muted)}
+.minirevs{display:grid;gap:16px}
+.minirev{border:1px solid var(--line);border-radius:16px;padding:20px;background:var(--card);transition:.3s}
+.minirev:hover{box-shadow:0 18px 40px -24px rgba(8,43,74,.3);transform:translateY(-3px)}
+.minirev .stars{font-size:14px}
+.minirev p{font-size:15px;margin:10px 0 14px;color:var(--ink);line-height:1.5}
+.minirev .who{font-size:13px}.minirev .who b{font-weight:600}.minirev .who span{color:var(--muted)}
+
+/* responsive */
+@media(max-width:980px){
+  .hero__grid,.about,.contact,.trial,.feat,.fquote{grid-template-columns:1fr}
+  .pgrid,.prods,.revs,.collage,.passgrid{grid-template-columns:repeat(2,1fr)}
+  .strip{grid-template-columns:repeat(2,1fr)}
+  .strip__i:nth-child(2){border-right:0}
+  .foot__grid{grid-template-columns:1fr 1fr}
+  .nav__links{display:none}.sched{position:relative;right:auto;bottom:auto;width:100%;margin-top:18px}
+  .hero__photo{aspect-ratio:4/3.4}
+  .prow{grid-template-columns:48px 1fr auto;gap:18px}.prow .meta{display:none}.prow .peek{display:none}
+}
+@media(max-width:560px){.pgrid,.prods,.revs,.collage,.tform,.foot__grid,.passgrid{grid-template-columns:1fr}
+  .collage .wide{grid-column:auto}.nav__cta .btn--ghost{display:none}}
+</style>
+</head>
+<body data-variation="momentum">
+
+<!-- ============ HEADER ============ -->
+<header data-header>
+  <div class="wrap nav">
+    <a class="brand" href="#"><img src="assets/logo-navy.png" alt="K-Star"><span>K-STAR</span></a>
+    <nav class="nav__links">
+      <a href="#programs">Discover</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--ghost" data-modal-open="book">Book Classes</a>
+      <a class="btn btn--accent" href="#products">Buy Classes</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero section" data-hero style="padding-bottom:0">
+  <div class="wrap hero__grid">
+    <div data-reveal>
+      <span class="eyebrow">Authentic Martial Arts &amp; Contortion · Las Vegas</span>
+      <h1 style="margin-top:18px">Transform your skills,<span class="l2">one class at a time.</span></h1>
+      <p class="hero__sub">Premium classes and wellness experiences for every fitness journey.</p>
+      <div class="hero__actions">
+        <a class="btn btn--accent" data-modal-open="book">Book your first class
+          <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <a class="btn btn--ghost" href="#about">Our story</a>
+      </div>
+      <div class="proof">
+        <div class="avatars">
+          <div class="ph"><span class="ph__label"></span></div>
+          <div class="ph"><span class="ph__label"></span></div>
+          <div class="ph"><span class="ph__label"></span></div>
+          <div class="ph"><span class="ph__label"></span></div>
+        </div>
+        <span>Join the <b>K-Star family</b> — classes for<br>kids, teens &amp; adults.</span>
+      </div>
+    </div>
+
+    <div class="hero__media" data-reveal data-reveal-delay="120">
+      <div class="blob blob--1"></div>
+      <div class="hero__photo">
+        <div class="ph hslide is-active" data-hero-slide><span class="ph__label">photo — adult muay thai class</span></div>
+        <div class="ph hslide" data-hero-slide><span class="ph__label">photo — youth karate group</span></div>
+        <div class="ph hslide" data-hero-slide><span class="ph__label">photo — contortion showcase</span></div>
+        <div class="hero__dots" data-hero-dots></div>
+      </div>
+      <div class="sched">
+        <div class="sched__top"><b>This Week</b><span class="sched__live">3 SPOTS LEFT</span></div>
+        <div class="srow" data-book-class="Adult Muay Thai · Tue 6:00 PM">
+          <span class="tk">TUE 6:00</span><span class="nm">Adult Muay Thai</span>
+          <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+        <div class="srow" data-book-class="Lil Stars · Wed 4:30 PM">
+          <span class="tk">WED 4:30</span><span class="nm">Lil Stars (Ages 4–7)</span>
+          <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+        <div class="srow" data-book-class="Contortion Fundamentals · Sat 11:00 AM">
+          <span class="tk">SAT 11:00</span><span class="nm">Contortion Fundamentals</span>
+          <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marq" aria-hidden="true">
+  <div class="marq__t">
+    <b>Muay Thai<i>✦</i>BJJ<i>✦</i>Karate<i>✦</i>Contortion<i>✦</i>Youth Programs<i>✦</i>Personal Training<i>✦</i></b>
+    <b>Muay Thai<i>✦</i>BJJ<i>✦</i>Karate<i>✦</i>Contortion<i>✦</i>Youth Programs<i>✦</i>Personal Training<i>✦</i></b>
+  </div>
+</div>
+
+<!-- ============ STATEMENT ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="statement">
+      <span class="eyebrow" style="justify-content:center" data-reveal>Activate your potential</span>
+      <h2 data-reveal data-reveal-delay="80" style="margin-top:22px">Discover K-Star — the pro's choice for <span class="mk">martial arts</span> &amp; contortion.</h2>
+      <p class="lead" data-reveal data-reveal-delay="140">Two former Cirque du Soleil stars sharing authentic martial arts and Mongolian contortion with Las Vegas — for kids, teens and adults chasing their next level.</p>
+      <div class="founders" data-reveal data-reveal-delay="200">
+        <div class="founder"><div class="ph"><span class="ph__label"></span></div><div><b>Philip Sahagun</b><span>Co-founder · Martial Arts</span></div></div>
+        <div class="founder"><div class="ph"><span class="ph__label"></span></div><div><b>Vitalbayar Chimed</b><span>Co-founder · Contortion</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRIAL BAND ============ -->
+<section class="section" style="padding-top:clamp(40px,7vw,90px);padding-bottom:0">
+  <div class="wrap">
+    <div class="trial" data-reveal>
+      <div>
+        <span class="eyebrow" style="color:var(--cyan-200)">Free Trial</span>
+        <h2 style="margin-top:14px">Your first class is on us.</h2>
+        <p>Book your trial class now — no commitment, just come move with us.</p>
+      </div>
+      <form class="tform" data-mock-form>
+        <div data-form-fields style="display:contents">
+          <div class="field"><label>First name</label><input placeholder="Jordan" required></div>
+          <div class="field"><label>Last name</label><input placeholder="Lee" required></div>
+          <div class="field"><label>Email</label><input type="email" placeholder="you@email.com" required></div>
+          <div class="field"><label>Phone</label><input placeholder="(847) 000-0000"></div>
+          <div class="field full"><label>Program</label>
+            <select><option>Choose a program…</option><option>Youth Martial Arts</option><option>Adult Martial Arts</option><option>Lil Stars</option><option>Contortion</option></select></div>
+          <button class="btn btn--accent full" type="submit" style="justify-content:center">Claim my free class
+            <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
+        </div>
+        <div class="tform__done" data-form-done hidden>
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
+          <div><b style="font-family:var(--font-display);font-size:19px">You're in!</b><br><span style="color:#9DB8CC">We'll text you to lock in your trial time.</span></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="section section--bordered" id="about">
+  <div class="wrap about">
+    <div data-reveal>
+      <span class="eyebrow">Our story</span>
+      <h2>From the Cirque stage to your family's studio.</h2>
+      <p class="lead">High-level coaching in a stimulating environment — for the whole family.</p>
+      <p class="body">Founded by Philip Sahagun and Vitalbayar Chimed — two former stars of the Cirque du Soleil stage — K-Star is dedicated to sharing authentic martial arts and Mongolian contortion with the people of Las Vegas. Our team of qualified coaches and passionate teachers offers high-level courses for every age and ability. Whether you're chasing a new life goal or building a future champion, we're here to help you along the way.</p>
+      <a class="btn btn--navy" href="#programs">Explore programs
+        <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    </div>
+    <div class="about__media" data-reveal data-reveal-delay="120">
+      <div class="ph"><span class="ph__label">photo — coach &amp; student training</span></div>
+      <div class="about__cap">From Cirque du Soleil stages<br>to your family's home studio.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROGRAMS ============ -->
+<section class="section section--bordered" id="programs">
+  <div class="wrap">
+    <div class="shead">
+      <div>
+        <span class="eyebrow">Find a perfect program</span>
+        <h2 style="margin-top:14px">For you &amp; your family</h2>
+        <p style="color:var(--muted);margin-top:14px;max-width:42ch">Explore a diverse mix of classes tailored to master your potential. Try something new, or dive deeper into your favorite practice.</p>
+      </div>
+      <div class="seg" data-tabs data-tabs-target="#prog-host" style="align-self:center;background:var(--paper-2);border-color:var(--line)">
+        <button data-tab="schedule" class="is-active" style="color:var(--muted)">Check Class Schedules</button>
+        <button data-tab="pass" style="color:var(--muted)">Class Pass</button>
+      </div>
+    </div>
+    <div id="prog-host">
+      <div data-panel="schedule" data-reveal>
+        <div class="prow" data-modal-open="book">
+          <span class="idx">01</span><span class="nm">Contortionist</span>
+          <span class="meta">All ages<br>Mon · Wed · Sat</span>
+          <span class="av"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <div class="peek"><div class="ph"><span class="ph__label">contortion</span></div></div>
+        </div>
+        <div class="prow" data-modal-open="book">
+          <span class="idx">02</span><span class="nm">Lil Stars</span>
+          <span class="meta">Ages 4–7<br>Tue · Thu</span>
+          <span class="av"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <div class="peek"><div class="ph"><span class="ph__label">kids class</span></div></div>
+        </div>
+        <div class="prow" data-modal-open="book">
+          <span class="idx">03</span><span class="nm">Youth Martial Arts</span>
+          <span class="meta">Las Vegas<br>Daily</span>
+          <span class="av"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <div class="peek"><div class="ph"><span class="ph__label">youth martial arts</span></div></div>
+        </div>
+        <div class="prow" data-modal-open="book">
+          <span class="idx">04</span><span class="nm">Adult Martial Arts</span>
+          <span class="meta">Beginner → Pro<br>Daily</span>
+          <span class="av"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <div class="peek"><div class="ph"><span class="ph__label">adult sparring</span></div></div>
+        </div>
+      </div>
+      <div data-panel="pass" hidden data-reveal>
+        <div class="passgrid">
+          <div class="pass"><div class="pt">Unlimited Monthly</div><div class="pp">$149<span>/mo</span></div><div class="pd">Every class, every discipline, whole family.</div></div>
+          <div class="pass"><div class="pt">10-Class Pack</div><div class="pp">$120</div><div class="pd">Drop in on your own schedule, never expires.</div></div>
+          <div class="pass"><div class="pt">Single Drop-In</div><div class="pp">$25</div><div class="pd">One class, any time. Perfect to test the waters.</div></div>
+          <div class="pass hot"><div class="pt">On us</div><div class="pp">$0</div><div class="pd">Your very first class is always free.</div>
+            <a class="btn btn--accent" data-modal-open="book" style="margin-top:16px">Claim it</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CREDIBILITY STRIP ============ -->
+<section class="wrap" data-reveal style="margin-bottom:clamp(40px,7vw,90px)">
+  <div class="strip">
+    <div class="strip__i"><div class="k"><span class="cyan">2</span> founders</div><div class="t">Former Cirque du Soleil stars</div></div>
+    <div class="strip__i"><div class="k"><span class="cyan">4</span> disciplines</div><div class="t">Martial arts to contortion</div></div>
+    <div class="strip__i"><div class="k"><span class="cyan">All</span> ages</div><div class="t">Lil Stars to adult competitors</div></div>
+    <div class="strip__i"><div class="k"><span class="cyan">5.0</span> ★ rated</div><div class="t">Loved by the K-Star family</div></div>
+  </div>
+</section>
+
+<!-- ============ STORIES ============ -->
+<section class="section section--bordered">
+  <div class="wrap crow" data-carousel>
+    <div class="shead">
+      <div><span class="eyebrow">From the mat</span><h2 style="margin-top:14px">We have stories to share</h2></div>
+      <div class="cnav">
+        <button class="cbtn" data-prev><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <button class="cbtn" data-next><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+    <div class="ctrack" data-track data-reveal>
+      <article class="story"><div class="ph"><span class="ph__label">photo — studio life</span></div>
+        <div class="story__b"><span class="story__tag">Wellness</span><h3>Finding calm through movement &amp; breath</h3><div class="by">Ryan Saamoro · Yoga &amp; Wellness Coach</div></div></article>
+      <article class="story"><div class="ph"><span class="ph__label">photo — sparring night</span></div>
+        <div class="story__b"><span class="story__tag">Muay Thai</span><h3>What a first sparring night really feels like</h3><div class="by">Ryan Saamoro · Wellness Coach</div></div></article>
+      <article class="story"><div class="ph"><span class="ph__label">photo — flexibility drill</span></div>
+        <div class="story__b"><span class="story__tag">Contortion</span><h3>The Mongolian art of contortion, explained</h3><div class="by">Vitalbayar Chimed · Co-founder</div></div></article>
+      <article class="story"><div class="ph"><span class="ph__label">photo — young black belt</span></div>
+        <div class="story__b"><span class="story__tag">Youth</span><h3>How our Lil Stars build confidence for life</h3><div class="by">K-Star Coaching Team</div></div></article>
+    </div>
+    <div data-dots></div>
+  </div>
+</section>
+
+<!-- ============ FEATURED PRODUCT ============ -->
+<section class="section section--bordered">
+  <div class="wrap">
+    <div class="shead">
+      <div><span class="eyebrow">Gear up</span><h2 style="margin-top:14px">Built for the grind</h2></div>
+    </div>
+    <div class="feat" data-reveal>
+      <div class="feat__media"><span class="feat__tag">Bestseller</span><div class="ph"><span class="ph__label">product — boxing gloves, lifestyle</span></div></div>
+      <div class="feat__panel">
+        <span class="eyebrow">Equipment</span>
+        <h3>Boxing Gloves — Red</h3>
+        <p>Durable, precise, and built to take a beating — the same gear our coaches and competitors train in every day.</p>
+        <div class="optrow on" data-opt><span class="lo"><span class="rad"></span>A pair of Red Gloves</span><span class="pr">$49.99</span></div>
+        <div class="optrow" data-opt><span class="lo"><span class="rad"></span>Gloves + Hand Wraps</span><span class="pr">$64.99</span></div>
+        <div class="optrow" data-opt><span class="lo"><span class="rad"></span>Full Starter Kit</span><span class="pr">$129.99</span></div>
+        <button class="btn btn--navy" style="margin-top:18px;justify-content:center">Add to cart
+          <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRODUCTS ============ -->
+<section class="section section--bordered" id="products">
+  <div class="wrap">
+    <div class="shead">
+      <div><span class="eyebrow">Gear up</span><h2 style="margin-top:14px">Check out our products</h2>
+        <p style="color:var(--muted);margin-top:12px;max-width:48ch">Quality equipment for every discipline — from your first gi to competition-ready gear.</p></div>
+      <a class="btn btn--ghost" href="#" style="align-self:center">Visit our store →</a>
+    </div>
+    <div class="prods" data-reveal>
+      <article class="prod"><div class="ph"><span class="ph__label">product — karate gi</span></div>
+        <div class="prod__b"><span class="cat">Equipment</span><h3>Kids' Karate Gi Uniform</h3>
+          <div class="prod__row"><span class="price">$10.99</span><button class="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button></div></div></article>
+      <article class="prod"><div class="ph"><span class="ph__label">product — mouthguard</span></div>
+        <div class="prod__b"><span class="cat">Equipment</span><h3>Martial Arts Mouthguard M — Clear</h3>
+          <div class="prod__row"><span class="price">$9.99</span><button class="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button></div></div></article>
+      <article class="prod"><div class="ph"><span class="ph__label">product — nunchucks</span></div>
+        <div class="prod__b"><span class="cat">Equipment</span><h3>Martial Arts Training Nunchucks</h3>
+          <div class="prod__row"><span class="price">$89.99</span><button class="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button></div></div></article>
+      <article class="prod"><div class="ph"><span class="ph__label">product — boxing gloves</span></div>
+        <div class="prod__b"><span class="cat">Equipment</span><h3>Boxing Gloves — Red</h3>
+          <div class="prod__row"><span class="price">$49.99</span><button class="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button></div></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="section section--bordered">
+  <div class="wrap">
+    <div class="shead"><div><span class="eyebrow">5-Star reviews</span><h2 style="margin-top:14px">The room speaks</h2></div></div>
+    <div class="fquote">
+      <div data-reveal>
+        <p class="q">"World-class instruction in a welcoming room. My daughter went from shy to <span class="cyan">fearless</span> in two months — best academy in Las Vegas, hands down."</p>
+        <div class="qby"><div class="ph"><span class="ph__label"></span></div><div><b>Gerry Tucker</b><span>Karate Black Belt</span></div></div>
+      </div>
+      <div class="minirevs" data-reveal data-reveal-delay="120">
+        <div class="minirev"><div class="stars">★★★★★</div><p>The coaches genuinely care. A real community for every age.</p><div class="who"><b>Jean Iverson</b> <span>· Dance Trainer</span></div></div>
+        <div class="minirev"><div class="stars">★★★★★</div><p>Training here sharpened my technique and my mindset.</p><div class="who"><b>Paul Rivera</b> <span>· Professional Boxer</span></div></div>
+        <div class="minirev"><div class="stars">★★★★★</div><p>Whether you're 5 or 50, there's a place for you on this mat.</p><div class="who"><b>Tina Rey</b> <span>· Taekwondo Instructor</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="section section--bordered">
+  <div class="wrap">
+    <div class="shead"><div><span class="eyebrow">Gallery</span><h2 style="margin-top:14px">Inside the studio</h2>
+      <p style="color:var(--muted);margin-top:12px;max-width:48ch">Browse photos and clips from classes, showcases, and studio life. Switch categories to load a new collage.</p></div></div>
+    <div class="gal__tabs" data-tabs data-tabs-target="#gal-host">
+      <button data-tab="classes" class="is-active">Classes</button>
+      <button data-tab="events">Events</button>
+      <button data-tab="studio">Studio</button>
+    </div>
+    <div id="gal-host" data-reveal>
+      <div class="collage" data-panel="classes">
+        <div class="ph tall"><span class="ph__label">photo — class</span></div>
+        <div class="ph wide"><span class="ph__label">photo — group drill</span></div>
+        <div class="ph"><span class="ph__label">photo</span></div>
+        <div class="ph ph--play"><span class="ph__play"></span><span class="ph__label">video — sparring</span></div>
+        <div class="ph"><span class="ph__label">photo</span></div>
+        <div class="ph wide"><span class="ph__label">photo — kids class</span></div>
+      </div>
+      <div class="collage" data-panel="events" hidden>
+        <div class="ph wide"><span class="ph__label">photo — showcase</span></div>
+        <div class="ph tall"><span class="ph__label">photo — competition</span></div>
+        <div class="ph ph--play"><span class="ph__play"></span><span class="ph__label">video — demo</span></div>
+        <div class="ph"><span class="ph__label">photo</span></div>
+        <div class="ph"><span class="ph__label">photo</span></div>
+        <div class="ph"><span class="ph__label">photo</span></div>
+      </div>
+      <div class="collage" data-panel="studio" hidden>
+        <div class="ph"><span class="ph__label">photo — mats</span></div>
+        <div class="ph wide"><span class="ph__label">photo — training floor</span></div>
+        <div class="ph tall"><span class="ph__label">photo — lobby</span></div>
+        <div class="ph"><span class="ph__label">photo</span></div>
+        <div class="ph ph--play"><span class="ph__play"></span><span class="ph__label">video — tour</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section section--bordered" id="faq">
+  <div class="wrap">
+    <div class="contact" data-reveal>
+      <div style="position:relative;z-index:1">
+        <span class="eyebrow" style="color:var(--cyan-200)">Get in touch</span>
+        <h2 style="margin-top:14px">Want to know more<br>about our programs?</h2>
+        <p class="sub">Tell us about your experience and goals — we're excited to meet you and find your perfect fit.</p>
+        <div class="badge"><img src="assets/logo-white.png" alt=""><div><b>K-Star Training Academy</b><br><span>Las Vegas, NV</span></div></div>
+      </div>
+      <form class="tform" data-mock-form style="position:relative;z-index:1">
+        <div data-form-fields style="display:contents">
+          <div class="field"><label>First name</label><input placeholder="Jordan" required></div>
+          <div class="field"><label>Last name</label><input placeholder="Lee" required></div>
+          <div class="field"><label>Email</label><input type="email" placeholder="you@email.com" required></div>
+          <div class="field"><label>Phone</label><input placeholder="(847) 000-0000"></div>
+          <div class="field full"><label>Program of interest</label>
+            <select><option>Select…</option><option>Youth Martial Arts</option><option>Adult Martial Arts</option><option>Lil Stars</option><option>Contortion</option></select></div>
+          <div class="field full"><label>Message</label><input placeholder="Tell us about your goals…"></div>
+          <button class="btn btn--accent full" type="submit" style="justify-content:center">Submit
+            <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
+        </div>
+        <div class="tform__done" data-form-done hidden>
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
+          <div><b style="font-family:var(--font-display);font-size:19px">Message sent!</b><br><span style="color:#9DB8CC">A coach will be in touch within 24 hours.</span></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="wrap foot">
+  <div class="foot__grid">
+    <div class="foot__brand">
+      <a class="brand" href="#"><img src="assets/logo-navy.png" alt="K-Star"><span>K-STAR</span></a>
+      <p>Authentic martial arts &amp; Mongolian contortion for the whole family — in the heart of Las Vegas.</p>
+      <div style="margin-top:18px">
+        <h4>Hours</h4>
+        <div style="font-size:14px;line-height:1.9;color:var(--ink)">Mon – Wed · Closed<br>Thu – Fri · 11:00 AM – 9:00 PM<br>Sat – Sun · 11:00 AM – 3:00 AM</div>
+      </div>
+    </div>
+    <div><h4>Book</h4><ul>
+      <li><a href="#">Class Schedule</a></li><li><a href="#">Class Pass</a></li><li><a href="#">Trial Class</a></li>
+      <li><a href="#">Private Session</a></li><li><a href="#">Event Calendar</a></li><li><a href="#">Private Events</a></li></ul></div>
+    <div><h4>Learn More</h4><ul>
+      <li><a href="#faq">FAQs</a></li><li><a href="#programs">Discover</a></li><li><a href="#about">About the Studio</a></li>
+      <li><a href="#">Contact</a></li><li><a href="#">Instructors</a></li><li><a href="#">Private Parties</a></li></ul></div>
+    <div>
+      <h4>Stay Updated</h4>
+      <p style="color:var(--muted);font-size:14px">Resources, special offers and emails from K-Star.</p>
+      <form class="sub-form" data-mock-form><div data-form-fields style="display:contents"><input type="email" placeholder="Email address">
+        <button class="btn btn--accent" type="submit">Subscribe</button></div>
+        <span data-form-done hidden style="color:var(--accent-ink);font-size:14px;font-weight:600">✓ Subscribed!</span></form>
+      <div style="margin-top:24px"><h4>Contact</h4>
+        <div style="font-size:14px;color:var(--ink)">847-272-0000<br>Sunset Rd, Las Vegas, NV</div></div>
+    </div>
+  </div>
+  <div class="foot__bottom">
+    <span>© 2024 K-Star Studios · Terms · Privacy · Accessibility</span>
+    <div class="socials">
+      <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l1-4h-4V8c0-1 .3-2 2-2h2V2.5c-.5 0-2-.5-3.5-.5C12 2 10 3.8 10 7v3H7v4h3v8h3z"/></svg></a>
+      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+      <a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 3h3l-7 8 8 10h-6l-5-6-5 6H2l8-9L2 3h6l4 5 5-5z"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ BOOKING MODAL ============ -->
+<div class="kmodal" data-modal="book" aria-hidden="true">
+  <div class="kmodal__scrim"></div>
+  <div class="kmodal__card">
+    <button data-modal-close style="position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:50%;background:var(--paper);display:grid;place-items:center">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <span class="eyebrow">Book a class</span>
+    <h2 style="font-size:26px;margin:12px 0 4px">Reserve your spot</h2>
+    <p style="color:var(--muted);font-size:15px">Booking: <b data-book-target style="color:var(--accent-ink)">your first class</b></p>
+    <form class="tform" data-mock-form style="margin-top:18px;grid-template-columns:1fr 1fr">
+      <div data-form-fields style="display:contents">
+        <div class="field" style="--accent:var(--accent)"><label style="color:var(--muted)">First name</label><input placeholder="Jordan" required style="background:var(--paper);border-color:var(--line);color:var(--ink)"></div>
+        <div class="field"><label style="color:var(--muted)">Last name</label><input placeholder="Lee" required style="background:var(--paper);border-color:var(--line);color:var(--ink)"></div>
+        <div class="field full"><label style="color:var(--muted)">Email</label><input type="email" placeholder="you@email.com" required style="background:var(--paper);border-color:var(--line);color:var(--ink)"></div>
+        <button class="btn btn--accent full" type="submit" style="justify-content:center">Confirm booking</button>
+      </div>
+      <div class="tform__done" data-form-done hidden style="color:var(--ink)">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
+        <div><b style="font-family:var(--font-display);font-size:18px">See you on the mat!</b><br><span style="color:var(--muted)">Check your email for confirmation.</span></div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="assets/interactions.js"></script>
+<script>
+/* featured-product option selector */
+document.querySelectorAll('[data-opt]').forEach(function(row){
+  row.addEventListener('click',function(){
+    document.querySelectorAll('[data-opt]').forEach(function(r){r.classList.remove('on')});
+    row.classList.add('on');
+  });
+});
+</script>
+<script src="assets/photos.js"></script>
+</body>
+</html>

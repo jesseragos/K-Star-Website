@@ -1,0 +1,88 @@
+/* ============================================================
+   K-STAR — shared brand tokens + components
+   Used across all three variations. Each page layers its own
+   theme on top via its local <style>.
+   ============================================================ */
+
+:root{
+  /* Brand constants (from K-Star) */
+  --navy-900:#082B4A;   /* primary */
+  --navy-800:#0B355C;
+  --navy-700:#114676;
+  --navy-600:#1A5A93;
+  --cyan:#0ACBFF;       /* accent */
+  --cyan-200:#9BE9FF;
+  --cyan-600:#0596C2;
+
+  /* default accent hooks (overridden by Tweaks) */
+  --accent:var(--cyan);
+  --accent-ink:#04263a;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{margin:0}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer;border:none;background:none}
+::selection{background:var(--accent);color:var(--accent-ink)}
+
+/* ---- Media placeholder (user swaps real photos later) ---- */
+.ph{
+  position:relative;
+  overflow:hidden;
+  background:
+    repeating-linear-gradient(135deg,
+      color-mix(in srgb, var(--ph-tint, var(--navy-900)) 8%, transparent) 0 2px,
+      transparent 2px 11px),
+    var(--ph-bg, color-mix(in srgb, var(--navy-900) 6%, #fff));
+  display:grid;
+  place-items:center;
+  color:var(--ph-tint, var(--navy-700));
+  isolation:isolate;
+}
+.ph::before,.ph::after{
+  content:"";position:absolute;width:14px;height:14px;opacity:.5;
+  border:1.5px solid currentColor;
+}
+.ph::before{top:10px;left:10px;border-right:0;border-bottom:0}
+.ph::after{bottom:10px;right:10px;border-left:0;border-top:0}
+.ph__label{
+  font-family:"Space Mono",ui-monospace,monospace;
+  font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  padding:.45em .7em;line-height:1.35;text-align:center;max-width:80%;
+  background:color-mix(in srgb,var(--ph-bg,#fff) 70%, transparent);
+  border:1px solid color-mix(in srgb,currentColor 30%, transparent);
+  backdrop-filter:blur(2px);
+  border-radius:3px;
+}
+.ph--dark{--ph-bg:var(--navy-900);--ph-tint:var(--cyan-200)}
+.ph--play .ph__play{
+  position:absolute;inset:0;margin:auto;width:54px;height:54px;border-radius:50%;
+  display:grid;place-items:center;
+  background:color-mix(in srgb,var(--accent) 92%,#fff);color:var(--accent-ink);
+  box-shadow:0 8px 30px -8px rgba(0,0,0,.5);z-index:2;
+}
+.ph--play .ph__play::after{
+  content:"";border-left:13px solid currentColor;border-top:8px solid transparent;
+  border-bottom:8px solid transparent;margin-left:3px;
+}
+
+/* ---- Scroll reveal (progressive enhancement) ---- */
+[data-reveal]{opacity:0;transform:translateY(22px);
+  transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+[data-reveal].is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  [data-reveal]{opacity:1!important;transform:none!important;transition:none}
+}
+
+/* ---- Booking modal (shared shell) ---- */
+.kmodal{position:fixed;inset:0;z-index:200;display:none;place-items:center;padding:24px}
+.kmodal[aria-hidden="false"]{display:grid}
+.kmodal__scrim{position:absolute;inset:0;background:rgba(4,16,28,.55);backdrop-filter:blur(4px);
+  animation:kfade .25s ease}
+.kmodal__card{position:relative;z-index:1;width:min(440px,100%);
+  background:#fff;border-radius:18px;padding:30px;
+  box-shadow:0 40px 100px -30px rgba(4,16,28,.6);animation:kpop .3s cubic-bezier(.2,.8,.2,1)}
+@keyframes kfade{from{opacity:0}}
+@keyframes kpop{from{opacity:0;transform:translateY(14px) scale(.97)}}
