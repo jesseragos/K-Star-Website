@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K-Star Training Academy — Martial Arts &amp; Contortion · Las Vegas</title>
+<meta name="description" content="World class instruction in Martial Arts and Contortion for all ages in Las Vegas. Book your first free class with K-Star Training Academy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hubot+Sans:ital,wght@0,400..900;1,400..900&family=Urbanist:wght@400;500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&family=Josefin+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/v2.css">
+</head>
+<body data-variation="momentum-v2">
+
+<!-- ============ HEADER ============ -->
+<header data-header>
+  <div class="wrap nav">
+    <a class="brand" href="#top"><img src="assets/logo-navy.png" alt="K-Star"><span>K-STAR</span></a>
+    <nav class="nav__links">
+      <a href="#top" class="is-active">Home</a>
+      <a href="#about">About</a>
+      <a href="#programs">Programs</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#location">Location</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--ghost" data-modal-open="book">Book Classes</a>
+      <a class="btn btn--accent" href="#products">Buy Classes</a>
+    </div>
+    <button class="burger" data-menu-toggle aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- mobile menu -->
+<div class="menu-scrim" data-menu-scrim></div>
+<nav class="mobile-menu" data-mobile-menu>
+  <a href="#top" data-menu-link>Home</a>
+  <a href="#about" data-menu-link>About</a>
+  <a href="#programs" data-menu-link>Programs</a>
+  <a href="#stories" data-menu-link>Stories</a>
+  <a href="#products" data-menu-link>Shop</a>
+  <a href="#gallery" data-menu-link>Gallery</a>
+  <a href="#location" data-menu-link>Location</a>
+  <a class="btn btn--accent" data-modal-open="book" data-menu-link>Book your first class</a>
+</nav>
+
+<span id="top"></span>
+
+<!-- ============ HERO ============ -->
+<section class="hero" data-hero>
+  <div class="hero__bg">
+    <div class="ph" data-theme="strike" data-figma="https://www.figma.com/api/mcp/asset/312cca76-f0a6-49ff-9788-300ea0054f3a"></div>
+  </div>
+  <div class="wrap hero__inner">
+    <h1 data-reveal>
+      <span class="l1">Transform your skills</span>
+      <span class="l2">one class at a time.</span>
+    </h1>
+    <p class="hero__sub" data-reveal data-reveal-delay="100">World Class Instruction in Martial Arts and Contortion for all ages in Las Vegas.</p>
+    <div data-reveal data-reveal-delay="180">
+      <a class="btn btn--accent" data-modal-open="book">Book Your First Class
+        <svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+  <a class="hero__scroll" href="#book" aria-label="Scroll down">
+    <span>Scroll</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+  </a>
+</section>
+
+<!-- ============ BOOK A CLASS ============ -->
+<section class="wrap book" id="book">
+  <div class="book__card" data-reveal>
+    <div class="book__left">
+      <h2>Book a Class Today</h2>
+      <p>Your first class is on us. Pick a program and we'll take you straight to scheduling and checkout.</p>
+      <a class="btn btn--accent" href="#programs">View our class schedule
+        <svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <form class="book__form" data-book-form novalidate>
+      <h3>Your first class is on us. Book your trial class&nbsp;NOW.</h3>
+      <div data-form-fields>
+        <div class="fgrid">
+          <div class="field"><label>First Name</label>
+            <div class="control"><input name="first" placeholder="Jordan" required></div></div>
+          <div class="field"><label>Last Name</label>
+            <div class="control"><input name="last" placeholder="Lee" required></div></div>
+          <div class="field"><label>Email</label>
+            <div class="control">
+              <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+              <input name="email" type="email" placeholder="you@email.com" required></div></div>
+          <div class="field"><label>Phone Number</label>
+            <div class="control">
+              <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+              <input name="phone" placeholder="(702) 000-0000"></div></div>
+          <div class="field full"><label>Program</label>
+            <div class="control">
+              <select name="program" required>
+                <option value="">Choose a program…</option>
+                <option>Contortionist</option>
+                <option>Lil Stars (4–6)</option>
+                <option>Youth Martial Arts (7–14)</option>
+                <option>Adult Martial Arts (13+)</option>
+              </select>
+              <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+            </div></div>
+        </div>
+        <div class="book__submit">
+          <a class="btn btn--ghost-light" role="button" tabindex="0" data-book-submit>Continue
+            <svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <div class="book__done" data-form-done hidden>
+        <span class="tick"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
+        <div><b style="font-family:var(--font-display);font-size:20px">You're in!</b><br>
+          <span style="color:rgba(255,255,255,.8)">We'll text you to lock in your trial time.</span></div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="section wrap" id="about">
+  <div class="shead">
+    <div class="shead__h" data-reveal>
+      <span class="eyebrow">Our story</span>
+      <h2 style="margin-top:14px">Activate your potential</h2>
+    </div>
+    <p class="shead__sub" data-reveal data-reveal-delay="80">Train authentic Martial Arts &amp; Contortion in Las Vegas</p>
+  </div>
+  <div style="display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(28px,4vw,64px);align-items:center" class="about__grid">
+    <div class="ph" data-theme="contortion" data-figma="https://www.figma.com/api/mcp/asset/bbb29a15-b749-4c2e-a8f5-081a634da9c9"
+         style="aspect-ratio:683/556;border-radius:25px" data-reveal></div>
+    <div data-reveal data-reveal-delay="120">
+      <p style="color:var(--muted);font-size:18px;margin-bottom:18px">K-Star Training Academy was founded by <b style="color:var(--primary)">Philip Sahagun</b> and <b style="color:var(--primary)">Ulziibayar Chimed</b>, two former stars of the Cirque Du Soleil stage dedicated to sharing Authentic Martial Arts and Mongolian Contortion with the people of Las Vegas.</p>
+      <p style="color:var(--muted);font-size:18px;margin-bottom:26px">We have a team of qualified coaches and passionate teachers, whose mission is to offer high-level courses in a stimulating environment for the entire family. Each of our programs allows for specialization, and is available to people of all ages and skill sets. So whether you are looking for a new life goal or want to build up a future champion, we are here to help you along the way.</p>
+      <a class="btn btn--accent" href="#programs">Learn More
+        <svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORIES ============ -->
+<section class="section stories" id="stories" data-story-carousel>
+  <div class="wrap">
+    <div class="shead">
+      <div class="shead__h" data-reveal>
+        <span class="eyebrow">From the mat</span>
+        <h2 style="margin-top:14px">We have stories to share</h2>
+      </div>
+      <div class="cctrl" data-reveal data-reveal-delay="80">
+        <div class="cprog" data-prog></div>
+        <div class="carrows">
+          <button class="carrow" data-prev aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <button class="carrow" data-next aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <div class="track" data-track data-reveal>
+      <article class="story">
+        <div class="story__ph ph" data-theme="flex" data-figma="https://www.figma.com/api/mcp/asset/6f0cecdd-639b-4bb8-b8a8-5816ac33a212"></div>
+        <div class="story__b">
+          <div class="story__av ph" data-theme="face" data-figma="https://www.figma.com/api/mcp/asset/207ce6e0-1ad8-4a3f-8745-c48d8467b87b"></div>
+          <div><div class="story__nm">Ryan Seemore</div>
+            <div class="story__pills"><span class="pill">Certified Yoga Instructor</span><span class="pill">Wellness Coach</span></div></div>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story__ph ph" data-theme="gym" data-figma="https://www.figma.com/api/mcp/asset/ab09e618-803d-495f-9c83-480e9af39b9c"></div>
+        <div class="story__b">
+          <div class="story__av ph" data-theme="face" data-figma="https://www.figma.com/api/mcp/asset/bceb08ac-127e-485b-b1f9-9f67db2f6fc7"></div>
+          <div><div class="story__nm">Sarah Mitchell</div>
+            <div class="story__pills"><span class="pill">Personal Trainer</span><span class="pill">Nutrition Coach</span></div></div>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story__ph ph" data-theme="flex" data-figma="https://www.figma.com/api/mcp/asset/62091227-375e-47ba-9044-cffc104b7355"></div>
+        <div class="story__b">
+          <div class="story__av ph" data-theme="face" data-figma="https://www.figma.com/api/mcp/asset/da4bfb8a-b21b-44c7-86cc-a732376ee9e8"></div>
+          <div><div class="story__nm">James Chen</div>
+            <div class="story__pills"><span class="pill">Pilates Instructor</span><span class="pill">Physical Therapist</span></div></div>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story__ph ph" data-theme="strike" data-figma="https://www.figma.com/api/mcp/asset/707e6206-eee7-465d-b9c9-23cb9b0b1d7f"></div>
+        <div class="story__b">
+          <div class="story__av ph" data-theme="face" data-figma="https://www.figma.com/api/mcp/asset/420a42f3-4a9e-4cc0-8848-be9a250c093e"></div>
+          <div><div class="story__nm">Maya Rodriguez</div>
+            <div class="story__pills"><span class="pill">Mindfulness Coach</span><span class="pill">Meditation Teacher</span></div></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROGRAMS ============ -->
+<section class="section programs is-light" id="programs">
+  <div class="programs__bg ph" data-theme="strike" aria-hidden="true"
+       style="position:absolute;inset:0;z-index:0;opacity:.10"></div>
+  <div class="wrap">
+    <div class="shead">
+      <div class="shead__h" data-reveal>
+        <span class="eyebrow is-light">Find your path</span>
+        <h2 class="is-light" style="margin-top:14px">Find a perfect program for you</h2>
+      </div>
+      <p class="shead__sub" style="color:rgba(255,255,255,.82)" data-reveal data-reveal-delay="80">Explore a diverse mix of classes and programs tailored to master your potential and vital skills. Try something new, or dive deeper into your favorite practice!</p>
+    </div>
+    <div class="pgrid" data-reveal>
+      <article class="pcard">
+        <div class="pcard__ph ph" data-theme="flex" data-figma="https://www.figma.com/api/mcp/asset/5462e48c-8934-475f-bb9c-f5ec14b40bbe"></div>
+        <div class="pcard__b">
+          <h3>Contortionist</h3>
+          <p class="pcard__desc">Increase flexibility, control, and graceful mobility through guided contortion and strength work for every level.</p>
+          <div class="pcard__foot"><span class="pill pill--light">All ages</span>
+            <a class="plink" data-modal-open="book">Learn More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        </div>
+      </article>
+      <article class="pcard">
+        <div class="pcard__ph ph" data-theme="kids" data-figma="https://www.figma.com/api/mcp/asset/f63a503a-0f8d-410f-b8d6-0633fcb0a99d"></div>
+        <div class="pcard__b">
+          <h3>Lil Stars</h3>
+          <p class="pcard__desc">An early-learning martial arts class focused on coordination, discipline, confidence, and joyful movement.</p>
+          <div class="pcard__foot"><span class="pill pill--light">4–6 ages</span>
+            <a class="plink" data-modal-open="book">Learn More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        </div>
+      </article>
+      <article class="pcard">
+        <div class="pcard__ph ph" data-theme="youth" data-figma="https://www.figma.com/api/mcp/asset/21a4b9fe-ebee-4d07-a125-6f1510de40db"></div>
+        <div class="pcard__b">
+          <h3>Youth Martial Arts</h3>
+          <p class="pcard__desc">Build strong fundamentals, resilience, and focus through age-specific training that keeps students engaged and challenged.</p>
+          <div class="pcard__foot"><span class="pill pill--light">7–14 ages</span>
+            <a class="plink" data-modal-open="book">Learn More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        </div>
+      </article>
+      <article class="pcard">
+        <div class="pcard__ph ph" data-theme="strike" data-figma="https://www.figma.com/api/mcp/asset/dd672d8d-1b00-4701-92ab-f7a0ab30b26e"></div>
+        <div class="pcard__b">
+          <h3>Adult Martial Arts</h3>
+          <p class="pcard__desc">A comprehensive education combining techniques from traditional styles such as Wushu, Kung Fu, Karate and more.</p>
+          <div class="pcard__foot"><span class="pill pill--light">13+ ages</span>
+            <a class="plink" data-modal-open="book">Learn More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        </div>
+      </article>
+    </div>
+    <div class="programs__cta" data-reveal>
+      <a class="btn btn--accent" data-modal-open="book">Check Class Schedules
+        <svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="section wrap" id="reviews">
+  <div class="shead">
+    <div class="shead__h" data-reveal>
+      <span class="eyebrow">What they're saying</span>
+      <h2 style="margin-top:14px">See our customer reviews</h2>
+    </div>
+    <p class="shead__sub" data-reveal data-reveal-delay="80">See why our classes keep earning 5 star reviews</p>
+  </div>
+  <div class="rgrid" data-reveal>
+    <article class="rev">
+      <div class="rev__quote">&ldquo;</div>
+      <p class="rev__txt">The coaching is on another level. Real working pros who actually break the movement down.</p>
+      <div class="stars">★★★★★</div>
+      <div class="rev__by">
+        <div class="rev__av ph" data-theme="face" data-figma="https://www.figma.com/api/mcp/asset/377581ae-1243-4755-a320-a5687d1ba05b"></div>
+        <div><div class="rev__nm">Don Willams</div><span class="pill">Wushu Master</span></div>
+      </div>
+    </article>
+    <article class="rev">
+      <div class="rev__quote">&ldquo;</div>
+      <p class="rev__txt">Philip has this rare ability to meet you where you are and push you further than you thought possible.</p>
+      <div class="stars">★★★★★</div>
+      <div class="rev__by">
+        <div class="rev__av ph" data-theme="face" data-figma="https://www.figma.com/api/mcp/asset/a14fb0b4-75bf-4f2e-b11e-cd9054ebb793"></div>
+        <div><div class="rev__nm">Alicia Bennet</div><span class="pill">Dance Trainer</span></div>
+      </div>
+    </article>
+    <article class="rev">
+      <div class="rev__quote">&ldquo;</div>
+      <p class="rev__txt">I've tried so many programs but nothing compares. My flexibility and rhythm improved in just weeks.</p>
+      <div class="stars">★★★★★</div>
+      <div class="rev__by">
+        <div class="rev__av ph" data-theme="face" data-figma="https://www.figma.com/api/mcp/asset/30cee9bb-4937-442e-95f1-b10b4b9edf89"></div>
+        <div><div class="rev__nm">Priya Nandha</div><span class="pill">Yoga Instructor</span></div>
+      </div>
+    </article>
+    <article class="rev">
+      <div class="rev__quote">&ldquo;</div>
+      <p class="rev__txt">Finally a platform that takes technique seriously, and the community keeps you motivated.</p>
+      <div class="stars">★★★★★</div>
+      <div class="rev__by">
+        <div class="rev__av ph" data-theme="face" data-figma="https://www.figma.com/api/mcp/asset/7d37d354-4a41-45e2-8622-de747f366593"></div>
+        <div><div class="rev__nm">Marcus Webb</div><span class="pill">Fitness Coach</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ PRODUCTS ============ -->
+<section class="section wrap" id="products">
+  <div class="shead">
+    <div class="shead__h" data-reveal>
+      <span class="eyebrow">Our merch</span>
+      <h2 style="margin-top:14px">Check out our products</h2>
+    </div>
+    <p class="shead__sub" data-reveal data-reveal-delay="80">Quality equipment for every discipline — from your first gi to competition-ready gear.</p>
+  </div>
+  <div class="prgrid" data-reveal>
+    <article class="prod">
+      <div class="prod__ph ph" data-theme="gear" data-figma="https://www.figma.com/api/mcp/asset/27c385e0-5ff9-4a86-86b9-077841f84bd1"></div>
+      <div class="prod__b">
+        <span class="prod__cat">Equipment</span>
+        <div class="prod__nm">Kids' Karate Gi Uniform</div>
+        <div class="prod__row"><span class="prod__price"><span>From</span>$10.99</span>
+          <a class="prod__view" href="#">View Details <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      </div>
+    </article>
+    <article class="prod">
+      <div class="prod__ph ph" data-theme="gear" data-figma="https://www.figma.com/api/mcp/asset/eac5b6f3-0957-473e-a418-8252cd12ffaf"></div>
+      <div class="prod__b">
+        <span class="prod__cat">Equipment</span>
+        <div class="prod__nm">Martial Arts Mouthguard</div>
+        <div class="prod__row"><span class="prod__price"><span>From</span>$5.59</span>
+          <a class="prod__view" href="#">View Details <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      </div>
+    </article>
+    <article class="prod">
+      <div class="prod__ph ph" data-theme="gear" data-figma="https://www.figma.com/api/mcp/asset/a2f6c7c2-2bfe-463e-9206-1453b25bab87"></div>
+      <div class="prod__b">
+        <span class="prod__cat">Equipment</span>
+        <div class="prod__nm">Training Nunchucks</div>
+        <div class="prod__row"><span class="prod__price"><span>From</span>$39.99</span>
+          <a class="prod__view" href="#">View Details <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      </div>
+    </article>
+    <article class="prod">
+      <div class="prod__ph ph" data-theme="gear" data-figma="https://www.figma.com/api/mcp/asset/c202b38d-4c06-4cce-b165-0b597b81c89a"></div>
+      <div class="prod__b">
+        <span class="prod__cat">Equipment</span>
+        <div class="prod__nm">Boxing Gloves — Red</div>
+        <div class="prod__row"><span class="prod__price"><span>From</span>$49.99</span>
+          <a class="prod__view" href="#">View Details <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      </div>
+    </article>
+  </div>
+  <div class="products__cta" data-reveal>
+    <a class="btn btn--accent" href="#">View in Shop
+      <svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="section gallery is-light" id="gallery" data-gallery>
+  <div class="wrap">
+    <div class="shead">
+      <div class="shead__h" data-reveal>
+        <span class="eyebrow is-light">On gym moments</span>
+        <h2 class="is-light" style="margin-top:14px">Gallery</h2>
+      </div>
+      <div data-reveal data-reveal-delay="80" style="display:flex;flex-direction:column;gap:18px;align-items:flex-end">
+        <div class="gtabs" data-tabs data-tabs-target="#gal-host">
+          <button data-tab="classes" class="is-active">Classes</button>
+          <button data-tab="events">Events</button>
+          <button data-tab="studio">Studio</button>
+        </div>
+        <div class="cctrl">
+          <div class="cprog" data-gal-prog></div>
+          <div class="carrows">
+            <button class="carrow" data-gal-prev aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+            <button class="carrow" data-gal-next aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="gal-host" data-reveal>
+      <div class="gtrack" data-panel="classes" data-gal-track>
+        <div class="gtile"><div class="ph" data-theme="strike" data-figma="https://www.figma.com/api/mcp/asset/1f66be35-c86f-4377-9b80-a3dd71dd0fc8"></div></div>
+        <div class="gtile"><div class="ph" data-theme="flex" data-figma="https://www.figma.com/api/mcp/asset/b0161086-c081-4f1a-9b0c-050e77a5116e"></div></div>
+        <div class="gtile"><div class="ph" data-theme="gym" data-figma="https://www.figma.com/api/mcp/asset/3c3a2276-44e0-48a6-bb44-078a9cb92c16"></div></div>
+        <div class="gtile"><div class="ph" data-theme="kids" data-figma="https://www.figma.com/api/mcp/asset/c952a002-2185-4873-b433-eabbbec21da9"></div></div>
+        <div class="gtile"><div class="ph" data-theme="strike" data-figma="https://www.figma.com/api/mcp/asset/5bed6f7d-1401-46a0-b3e1-86c756f61b71"></div></div>
+      </div>
+      <div class="gtrack" data-panel="events" data-gal-track hidden>
+        <div class="gtile"><div class="ph" data-theme="strike"></div></div>
+        <div class="gtile"><div class="ph" data-theme="youth"></div></div>
+        <div class="gtile"><div class="ph" data-theme="gym"></div></div>
+        <div class="gtile"><div class="ph" data-theme="flex"></div></div>
+        <div class="gtile"><div class="ph" data-theme="kids"></div></div>
+      </div>
+      <div class="gtrack" data-panel="studio" data-gal-track hidden>
+        <div class="gtile"><div class="ph" data-theme="gym"></div></div>
+        <div class="gtile"><div class="ph" data-theme="gym"></div></div>
+        <div class="gtile"><div class="ph" data-theme="strike"></div></div>
+        <div class="gtile"><div class="ph" data-theme="flex"></div></div>
+        <div class="gtile"><div class="ph" data-theme="youth"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOCATION / MAP ============ -->
+<section class="section wrap" id="location">
+  <div class="location__grid">
+    <div class="location__info" data-reveal>
+      <span class="eyebrow">Find us</span>
+      <h2>Train with us in Las&nbsp;Vegas</h2>
+      <div class="locrow">
+        <span class="lic"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+        <div><h4>Studio</h4><p>2950 E Sunset Rd #100,<br>Las Vegas, NV 89120</p></div>
+      </div>
+      <div class="locrow">
+        <span class="lic"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg></span>
+        <div><h4>Phone</h4><a href="tel:+17027531447">(702) 753-1447</a></div>
+      </div>
+      <div class="locrow">
+        <span class="lic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+        <div><h4>Hours</h4><p>Thu – Fri · 11:00 AM – 9:00 PM<br>Sat – Sun · 11:00 AM – 3:00 AM</p></div>
+      </div>
+      <div>
+        <a class="btn btn--primary" href="https://www.google.com/maps/search/?api=1&query=2950+E+Sunset+Rd+%23100+Las+Vegas+NV+89120" target="_blank" rel="noopener">Get directions
+          <svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+    <div class="location__map" data-reveal data-reveal-delay="120">
+      <iframe title="K-Star Training Academy location map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.openstreetmap.org/export/embed.html?bbox=-115.1257%2C36.0599%2C-115.0857%2C36.0799&amp;layer=mapnik&amp;marker=36.0699%2C-115.1057"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div class="foot__brand">
+        <a class="brand" href="#top"><img src="assets/logo-white.png" alt="K-Star"><span>K-STAR</span></a>
+        <p class="foot__tag">World Class Instruction in Martial Arts and Contortion for all ages in Las Vegas.</p>
+        <form class="foot__news" data-mock-form>
+          <div data-form-fields style="display:contents">
+            <input type="email" placeholder="Email address" required>
+            <button class="btn btn--accent" type="submit">Join</button>
+          </div>
+          <span data-form-done hidden style="color:var(--primary-light);font-weight:600">✓ Subscribed!</span>
+        </form>
+      </div>
+      <div>
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#programs">Class Schedule</a></li>
+          <li><a href="#products">Class Pass</a></li>
+          <li><a data-modal-open="book">Trial and Eval</a></li>
+          <li><a data-modal-open="book">Private Session</a></li>
+          <li><a href="#stories">Event Calendar</a></li>
+          <li><a href="#gallery">Private Events</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get Started</h4>
+        <ul>
+          <li><a data-modal-open="book">Book a Class</a></li>
+          <li><a href="#products">Shop Merch</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="#" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="#" target="_blank" rel="noopener">Youtube</a></li>
+        </ul>
+        <div style="margin-top:18px;color:rgba(255,255,255,.78);font-size:15px">
+          <a href="tel:+17027531447" style="color:#fff;font-weight:600">(702) 753-1447</a><br>
+          2950 E Sunset Rd #100, Las Vegas, NV 89120
+        </div>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <span class="cc">© 2026 K-Star Studios</span>
+      <div class="foot__legal">
+        <a href="#">Terms &amp; Conditions</a>
+        <a href="#">Privacy Policy</a>
+        <a class="totop" href="#top">Back to top
+          <svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ BOOKING MODAL ============ -->
+<div class="kmodal" data-modal="book" aria-hidden="true">
+  <div class="kmodal__scrim"></div>
+  <div class="kmodal__card">
+    <button data-modal-close aria-label="Close" style="position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:50%;background:var(--bg);display:grid;place-items:center">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <span class="eyebrow">Book a class</span>
+    <h2 style="font-size:28px;margin:12px 0 6px;text-transform:uppercase">Reserve your spot</h2>
+    <p style="color:var(--muted);font-size:15px;margin-bottom:18px">Booking: <b data-book-target style="color:var(--primary)">your first class</b></p>
+    <form class="book__form" data-mock-form style="color:var(--primary)">
+      <div data-form-fields>
+        <div class="fgrid" style="gap:12px">
+          <div class="field"><label style="color:var(--muted)">First name</label>
+            <div class="control" style="background:var(--bg);border-color:var(--line)"><input placeholder="Jordan" required style="color:var(--primary)"></div></div>
+          <div class="field"><label style="color:var(--muted)">Last name</label>
+            <div class="control" style="background:var(--bg);border-color:var(--line)"><input placeholder="Lee" required style="color:var(--primary)"></div></div>
+          <div class="field full"><label style="color:var(--muted)">Email</label>
+            <div class="control" style="background:var(--bg);border-color:var(--line)"><input type="email" placeholder="you@email.com" required style="color:var(--primary)"></div></div>
+        </div>
+        <button class="btn btn--accent" type="submit" style="width:100%;margin-top:16px">Confirm booking</button>
+      </div>
+      <div class="book__done" data-form-done hidden style="color:var(--primary)">
+        <span class="tick"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
+        <div><b style="font-family:var(--font-display);font-size:18px">See you on the mat!</b><br>
+          <span style="color:var(--muted)">Check your email for confirmation.</span></div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="assets/interactions.js"></script>
+<script src="assets/v2.js"></script>
+<script src="assets/photos-v2.js"></script>
+</body>
+</html>

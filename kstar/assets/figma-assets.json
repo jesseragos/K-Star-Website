@@ -1,0 +1,322 @@
+{
+  "_note": "Original Figma-uploaded asset URLs for K-Star Landing v2. These figma.com/api/mcp URLs are TEMPORARY and require auth \u2014 they will expire. Download with an authorized session (or re-export from Figma) and drop permanent files into kstar/assets/, then point each slot's data-figma (or swap to data-src) at the local path. The page already falls back to themed photos at runtime if these are unreachable.",
+  "fileKey": "HpaAICRDoNPPb6yChTlH4Q",
+  "node": "209:1328 (Landing v2)",
+  "assets": [
+    {
+      "var": "imgVector9",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/ef9772cd-de08-4c38-b618-e4f4add8bbd4"
+    },
+    {
+      "var": "imgVector403",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/d5735770-c54d-46e1-b784-c9a9a540c9eb"
+    },
+    {
+      "var": "imgLogo",
+      "purpose": "Brand logo",
+      "url": "https://www.figma.com/api/mcp/asset/43aecdc7-30e8-42d2-a295-ddef90a44df2"
+    },
+    {
+      "var": "imgProductCard",
+      "purpose": "Product 1 (Kids' Karate Gi Uniform)",
+      "url": "https://www.figma.com/api/mcp/asset/27c385e0-5ff9-4a86-86b9-077841f84bd1"
+    },
+    {
+      "var": "imgEllipse251",
+      "purpose": "Review 1 avatar (Don Willams)",
+      "url": "https://www.figma.com/api/mcp/asset/377581ae-1243-4755-a320-a5687d1ba05b"
+    },
+    {
+      "var": "imgGroup",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/f18dc6fb-eb85-465f-abdd-4e25ef090b93"
+    },
+    {
+      "var": "imgFrame48098595",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/11028e81-8ec6-4252-8e4c-e24ae7df7473"
+    },
+    {
+      "var": "imgFrame48098591",
+      "purpose": "Program 1 photo (Contortionist)",
+      "url": "https://www.figma.com/api/mcp/asset/5462e48c-8934-475f-bb9c-f5ec14b40bbe"
+    },
+    {
+      "var": "imgFrame48098592",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/ffa3fa8f-ae51-430e-ba9e-2718377797de"
+    },
+    {
+      "var": "imgStoryCardV2",
+      "purpose": "Story card 1 photo (Ryan Seemore)",
+      "url": "https://www.figma.com/api/mcp/asset/6f0cecdd-639b-4bb8-b8a8-5816ac33a212"
+    },
+    {
+      "var": "imgEllipse252",
+      "purpose": "Story 1 avatar (Ryan Seemore)",
+      "url": "https://www.figma.com/api/mcp/asset/207ce6e0-1ad8-4a3f-8745-c48d8467b87b"
+    },
+    {
+      "var": "imgFrame48098442",
+      "purpose": "Dark-band background photo (hero / book form / programs / gallery)",
+      "url": "https://www.figma.com/api/mcp/asset/312cca76-f0a6-49ff-9788-300ea0054f3a"
+    },
+    {
+      "var": "imgFrame48098443",
+      "purpose": "About / Our Story image card",
+      "url": "https://www.figma.com/api/mcp/asset/bbb29a15-b749-4c2e-a8f5-081a634da9c9"
+    },
+    {
+      "var": "imgStoryCardV3",
+      "purpose": "Story card 2 photo (Sarah Mitchell)",
+      "url": "https://www.figma.com/api/mcp/asset/ab09e618-803d-495f-9c83-480e9af39b9c"
+    },
+    {
+      "var": "imgEllipse253",
+      "purpose": "Story 2 avatar (Sarah Mitchell)",
+      "url": "https://www.figma.com/api/mcp/asset/bceb08ac-127e-485b-b1f9-9f67db2f6fc7"
+    },
+    {
+      "var": "imgStoryCardV4",
+      "purpose": "Story card 3 photo (James Chen)",
+      "url": "https://www.figma.com/api/mcp/asset/62091227-375e-47ba-9044-cffc104b7355"
+    },
+    {
+      "var": "imgEllipse254",
+      "purpose": "Story 3 avatar (James Chen)",
+      "url": "https://www.figma.com/api/mcp/asset/da4bfb8a-b21b-44c7-86cc-a732376ee9e8"
+    },
+    {
+      "var": "imgStoryCardV5",
+      "purpose": "Story card 4 photo (Maya Rodriguez)",
+      "url": "https://www.figma.com/api/mcp/asset/707e6206-eee7-465d-b9c9-23cb9b0b1d7f"
+    },
+    {
+      "var": "imgEllipse255",
+      "purpose": "Story 4 avatar (Maya Rodriguez)",
+      "url": "https://www.figma.com/api/mcp/asset/420a42f3-4a9e-4cc0-8848-be9a250c093e"
+    },
+    {
+      "var": "imgFrame48098593",
+      "purpose": "Program 2 photo (Lil Stars)",
+      "url": "https://www.figma.com/api/mcp/asset/f63a503a-0f8d-410f-b8d6-0633fcb0a99d"
+    },
+    {
+      "var": "imgFrame48098594",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/22f52f02-ec63-4dfb-a6dc-91346ccf448c"
+    },
+    {
+      "var": "imgFrame48098596",
+      "purpose": "Program 3 photo (Youth Martial Arts)",
+      "url": "https://www.figma.com/api/mcp/asset/21a4b9fe-ebee-4d07-a125-6f1510de40db"
+    },
+    {
+      "var": "imgFrame48098597",
+      "purpose": "Program 4 photo (Adult Martial Arts)",
+      "url": "https://www.figma.com/api/mcp/asset/dd672d8d-1b00-4701-92ab-f7a0ab30b26e"
+    },
+    {
+      "var": "imgEllipse256",
+      "purpose": "Review 2 avatar (Alicia Bennet)",
+      "url": "https://www.figma.com/api/mcp/asset/a14fb0b4-75bf-4f2e-b11e-cd9054ebb793"
+    },
+    {
+      "var": "imgEllipse257",
+      "purpose": "Review 3 avatar (Priya Nandha)",
+      "url": "https://www.figma.com/api/mcp/asset/30cee9bb-4937-442e-95f1-b10b4b9edf89"
+    },
+    {
+      "var": "imgEllipse258",
+      "purpose": "Review 4 avatar (Marcus Webb)",
+      "url": "https://www.figma.com/api/mcp/asset/7d37d354-4a41-45e2-8622-de747f366593"
+    },
+    {
+      "var": "imgProductCard1",
+      "purpose": "Product 2 (Mouthguard)",
+      "url": "https://www.figma.com/api/mcp/asset/eac5b6f3-0957-473e-a418-8252cd12ffaf"
+    },
+    {
+      "var": "imgProductCard2",
+      "purpose": "Product 3 (Training Nunchucks)",
+      "url": "https://www.figma.com/api/mcp/asset/a2f6c7c2-2bfe-463e-9206-1453b25bab87"
+    },
+    {
+      "var": "imgProductCard3",
+      "purpose": "Product 4 (Boxing Gloves - Red)",
+      "url": "https://www.figma.com/api/mcp/asset/c202b38d-4c06-4cce-b165-0b597b81c89a"
+    },
+    {
+      "var": "imgGalleryImage",
+      "purpose": "Gallery tile 1",
+      "url": "https://www.figma.com/api/mcp/asset/1f66be35-c86f-4377-9b80-a3dd71dd0fc8"
+    },
+    {
+      "var": "imgGalleryImage1",
+      "purpose": "Gallery tile 2",
+      "url": "https://www.figma.com/api/mcp/asset/b0161086-c081-4f1a-9b0c-050e77a5116e"
+    },
+    {
+      "var": "imgGalleryImage2",
+      "purpose": "Gallery tile 3",
+      "url": "https://www.figma.com/api/mcp/asset/3c3a2276-44e0-48a6-bb44-078a9cb92c16"
+    },
+    {
+      "var": "imgGalleryImage3",
+      "purpose": "Gallery tile 4",
+      "url": "https://www.figma.com/api/mcp/asset/c952a002-2185-4873-b433-eabbbec21da9"
+    },
+    {
+      "var": "imgGalleryImage4",
+      "purpose": "Gallery tile 5",
+      "url": "https://www.figma.com/api/mcp/asset/5bed6f7d-1401-46a0-b3e1-86c756f61b71"
+    },
+    {
+      "var": "imgIframe",
+      "purpose": "Location/Map embed image",
+      "url": "https://www.figma.com/api/mcp/asset/e7a488d0-ca44-4885-8caf-db67b76fe1c8"
+    },
+    {
+      "var": "imgVector1",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/911eb7ad-c72b-4125-8489-acbdfcaf52c1"
+    },
+    {
+      "var": "imgVector3",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/fc94d7dc-5814-416b-9994-c0ace9983445"
+    },
+    {
+      "var": "imgVuesaxLinearCall",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/3ec65edc-5ed0-418d-893a-3411616e9c0d"
+    },
+    {
+      "var": "imgVector10",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/2deb95d3-b163-49a3-a4c9-90865ebbd8df"
+    },
+    {
+      "var": "imgVector11",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/dbcdd86c-d6cf-480a-887d-c10b5d0b319f"
+    },
+    {
+      "var": "imgVector12",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/937b11da-648c-4a88-b19f-a417d47ff4c7"
+    },
+    {
+      "var": "imgEllipse",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/381c2c6c-0caa-44dc-82c0-c7841d77e413"
+    },
+    {
+      "var": "imgVector13",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/10c51b4e-37f4-4ed3-bb80-622d36547466"
+    },
+    {
+      "var": "imgGroup1",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/a389b5e2-c571-43b4-ab4c-d83addf3cf4f"
+    },
+    {
+      "var": "imgEllipse1",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/42014b25-4da4-480f-83ca-e7fa11c02414"
+    },
+    {
+      "var": "imgVector14",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/eee69b97-2d8c-4e92-a5bb-380cf12a90ee"
+    },
+    {
+      "var": "imgVector15",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/3d8fefb7-930f-4bfb-b87e-e494ec5fce4b"
+    },
+    {
+      "var": "imgSymbol",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/4509bfc7-975e-412b-a4b8-51cb4392ae70"
+    },
+    {
+      "var": "imgCall",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/84d9f975-cf53-483b-8e12-9b128af0184b"
+    },
+    {
+      "var": "imgVector",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/66ed0a04-33b4-49d1-8142-7764b6cbe30f"
+    },
+    {
+      "var": "imgVector2",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/c17ea93d-9b41-488d-94b5-03b32daffd94"
+    },
+    {
+      "var": "imgVector4",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/e20e8c4b-8250-4748-9f3c-1ff4e50fbaf1"
+    },
+    {
+      "var": "imgVector5",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/55f2e2ef-874e-4465-8107-489f2d609dc8"
+    },
+    {
+      "var": "imgVector6",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/25c715d5-8617-4c7c-ac4b-7009733d6f90"
+    },
+    {
+      "var": "imgVector7",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/3db030d2-d164-4145-b348-7f256340a420"
+    },
+    {
+      "var": "imgFrame12024",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/09050671-9627-4aae-8836-09ada5e773cb"
+    },
+    {
+      "var": "imgVector8",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/2bb3caff-26aa-44ce-bc27-5991963e6a75"
+    },
+    {
+      "var": "imgVector16",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/7c72a83d-270b-429e-b489-2bdf8d5bee5c"
+    },
+    {
+      "var": "imgVector17",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/efb2a42f-efd7-4de9-ac4c-98fd960b2e7f"
+    },
+    {
+      "var": "imgFrame12023",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/2409fb6f-defa-4e74-9df5-042edd8c670e"
+    },
+    {
+      "var": "imgVector18",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/3fa1e33e-1896-4b53-84c1-e221292b28de"
+    },
+    {
+      "var": "imgIcons",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/58ddb7e7-3efd-4588-a532-c16792cbc978"
+    },
+    {
+      "var": "imgLogo1",
+      "purpose": "icon / decorative (below-fold; verify)",
+      "url": "https://www.figma.com/api/mcp/asset/0c288d00-9618-40fe-9c68-faf5208ac30c"
+    }
+  ]
+}
