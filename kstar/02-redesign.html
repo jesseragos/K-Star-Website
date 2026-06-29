@@ -6,26 +6,26 @@
 <title>K-Star Training Academy</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/tokens.css">
+<link href="https://fonts.googleapis.com/css2?family=Hubot+Sans:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&family=Urbanist:wght@400;500;600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 /* ─── DESIGN TOKENS ─── */
 :root {
-  --primary:    #0a1e30;
-  --primary-mid:#163048;
+  --primary:     #0a1e30;
+  --primary-mid: #163048;
   --primary-light:#d8ecff;
-  --secondary:  #0acbff;
+  --secondary:   #0acbff;
   --secondary-alt:#00c8ff;
-  --bg:         #f4f7fa;
-  --bg2:        #eaf0f6;
-  --ink:        #0a1e30;
-  --muted:      #5a7184;
-  --white:      #ffffff;
-  --line:       #e0e8f0;
-  --card:       #ffffff;
+  --bg:          #f4f7fa;
+  --bg2:         #eaf0f6;
+  --ink:         #0a1e30;
+  --muted:       #5a7184;
+  --white:       #ffffff;
+  --line:        #e0e8f0;
+  --card:        #ffffff;
 
-  --font-head: 'Urbanist', system-ui, sans-serif;
-  --font-body: 'Hanken Grotesk', system-ui, sans-serif;
+  --font-head: 'Hubot Sans', 'Urbanist', system-ui, sans-serif;
+  --font-body: 'Urbanist', system-ui, sans-serif;
+  --font-desc: 'Hanken Grotesk', system-ui, sans-serif;
   --font-mono: 'Space Mono', monospace;
   --pad: clamp(20px, 5vw, 72px);
   --wrap: 1360px;
@@ -53,7 +53,14 @@ ul { margin: 0; padding: 0; list-style: none; }
 .eyebrow--light::before { background: var(--secondary); }
 
 /* ─── HEADINGS ─── */
-h1,h2,h3,h4 { margin: 0; font-family: var(--font-head); font-weight: 900; line-height: 0.93; letter-spacing: -0.02em; text-transform: uppercase; }
+h1,h2,h3,h4 {
+  margin: 0;
+  font-family: var(--font-head);
+  font-weight: 900;
+  line-height: 0.93;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
 
 /* ─── BUTTONS ─── */
 .btn {
@@ -70,9 +77,7 @@ h1,h2,h3,h4 { margin: 0; font-family: var(--font-head); font-weight: 900; line-h
 .btn--outline:hover { background: rgba(255,255,255,.08); }
 .btn--dark { background: var(--primary); color: #fff; }
 
-/* ─────────────────────────────────────────
-   NAV / HEADER
-───────────────────────────────────────── */
+/* ─── NAV / HEADER ─── */
 [data-header] {
   position: sticky; top: 0; z-index: 100;
   transition: background .3s, box-shadow .3s;
@@ -102,27 +107,25 @@ h1,h2,h3,h4 { margin: 0; font-family: var(--font-head); font-weight: 900; line-h
 .nav__cta .btn--ghost { background: transparent; border: 1.5px solid var(--line); color: var(--ink); font-family: var(--font-head); font-weight: 700; border-radius: 100px; }
 .nav__cta .btn--ghost:hover { border-color: var(--secondary); }
 
-/* ─────────────────────────────────────────
-   HERO
-───────────────────────────────────────── */
+/* ─── HERO ─── */
 .hero {
   background: var(--primary);
   position: relative;
   overflow: hidden;
-  min-height: 860px;
+  min-height: 920px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding-bottom: 80px;
+  padding-bottom: 100px;
 }
 .hero__bg {
   position: absolute; inset: 0;
-  background: url('https://www.figma.com/api/mcp/asset/1cdeb691-576f-4261-9d66-05702be4a1ca') center/cover no-repeat;
-  opacity: .18;
+  background: url('https://www.figma.com/api/mcp/asset/979aa832-243b-44fc-9624-634ed2c9eab4') center/cover no-repeat;
+  opacity: .55;
 }
 .hero__glow {
   position: absolute; width: 600px; height: 600px; border-radius: 50%;
-  background: radial-gradient(circle at 40% 40%, rgba(0,200,255,.22), transparent 70%);
+  background: radial-gradient(circle at 40% 40%, rgba(0,200,255,.18), transparent 70%);
   top: -100px; right: 5%;
   pointer-events: none;
 }
@@ -138,15 +141,19 @@ h1,h2,h3,h4 { margin: 0; font-family: var(--font-head); font-weight: 900; line-h
   color: var(--primary-light);
   margin-top: 20px;
 }
-.hero h1 .accent { color: var(--secondary-alt); }
+.hero h1 .accent { color: var(--secondary-alt); display: block; }
 .hero__sub {
   font-family: var(--font-body); font-size: 20px; font-weight: 400;
   color: rgba(255,255,255,.8); margin-top: 24px; line-height: 1.55;
 }
+.hero__credit {
+  position: absolute; bottom: 32px; left: var(--pad);
+  font-family: var(--font-head); font-weight: 700; font-size: 20px;
+  color: rgba(255,255,255,.55); z-index: 2; text-transform: uppercase;
+  letter-spacing: .04em;
+}
 
-/* ─────────────────────────────────────────
-   BOOK A CLASS — CTA BAND
-───────────────────────────────────────── */
+/* ─── CTA BAND ─── */
 .cta-band {
   background: var(--primary);
   border-radius: 18px;
@@ -159,11 +166,11 @@ h1,h2,h3,h4 { margin: 0; font-family: var(--font-head); font-weight: 900; line-h
 .cta-band::before {
   content: "";
   position: absolute; inset: 0;
-  background: url('https://www.figma.com/api/mcp/asset/1cdeb691-576f-4261-9d66-05702be4a1ca') center/cover no-repeat;
+  background: url('https://www.figma.com/api/mcp/asset/979aa832-243b-44fc-9624-634ed2c9eab4') center/cover no-repeat;
   opacity: .12;
 }
 .cta-band__inner {
-  display: grid; grid-template-columns: 390px 1px 1fr; gap: 67px;
+  display: grid; grid-template-columns: 389px 1px 1fr; gap: 67px;
   align-items: center; position: relative; z-index: 1;
 }
 .cta-band__divider { background: rgba(255,255,255,.15); height: 138px; width: 1px; }
@@ -171,7 +178,7 @@ h1,h2,h3,h4 { margin: 0; font-family: var(--font-head); font-weight: 900; line-h
   font-size: 52px; color: #fff; line-height: 1.1;
   text-shadow: 0 4px 11px rgba(0,85,95,.5);
 }
-.cta-band__left p { font-size: 18px; color: rgba(255,255,255,.75); margin-top: 16px; line-height: 1.55; }
+.cta-band__left p { font-size: 18px; color: rgba(255,255,255,.75); margin-top: 12px; line-height: 1.55; }
 .cta-band__left .btn { margin-top: 42px; }
 
 .cta-band__right h3 {
@@ -180,8 +187,8 @@ h1,h2,h3,h4 { margin: 0; font-family: var(--font-head); font-weight: 900; line-h
 }
 
 /* Form */
-.trial-form { margin-top: 26px; display: flex; flex-direction: column; gap: 14px; }
-.trial-form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.trial-form { margin-top: 26px; display: flex; flex-direction: column; gap: 8px; }
+.trial-form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 27px; }
 .tfield {
   background: rgba(0,0,0,.2); border: 1px solid #819ca2; border-radius: 6px;
   display: flex; align-items: center; gap: 8px;
@@ -200,9 +207,7 @@ h1,h2,h3,h4 { margin: 0; font-family: var(--font-head); font-weight: 900; line-h
 .trial-form__submit { display: flex; justify-content: flex-end; margin-top: 4px; }
 .trial-form__submit .btn { font-size: 18px; display: flex; align-items: center; gap: 8px; }
 
-/* ─────────────────────────────────────────
-   STATS STRIP
-───────────────────────────────────────── */
+/* ─── STATS STRIP ─── */
 .stats {
   display: grid; grid-template-columns: repeat(4, 1fr);
   border: 1px solid var(--line); border-radius: 20px;
@@ -219,28 +224,27 @@ h1,h2,h3,h4 { margin: 0; font-family: var(--font-head); font-weight: 900; line-h
 .stat__k .c { color: var(--secondary); }
 .stat__t { font-size: 13px; color: var(--muted); margin-top: 4px; }
 
-/* ─────────────────────────────────────────
-   ABOUT / OUR STORY
-───────────────────────────────────────── */
+/* ─── ABOUT ─── */
 .about-section { padding: clamp(80px, 9vw, 130px) 0; }
 .about-section__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; margin-bottom: 76px; }
-.about-section__head .right { font-size: 20px; font-weight: 600; color: var(--primary); text-align: right; text-transform: uppercase; max-width: 480px; line-height: 1.4; }
-.about-section__head h2 { font-size: clamp(40px, 6.6vw, 96px); letter-spacing: -1.8px; }
+.about-section__head .right {
+  font-size: 20px; font-weight: 600; color: var(--primary);
+  text-align: right; text-transform: uppercase; flex: 1; line-height: 1.4;
+}
+.about-section__head h2 { font-size: clamp(40px, 6.6vw, 96px); letter-spacing: -1.8px; white-space: nowrap; }
 
 .about-grid { display: grid; grid-template-columns: 683px 1fr; gap: clamp(36px, 5vw, 54px); align-items: center; }
 .about-img {
   border-radius: 16px; overflow: hidden; height: 556px;
-  background: var(--primary-mid) url('https://www.figma.com/api/mcp/asset/4beeff11-70f1-41ac-9d77-8bbeebc3231e') center/cover no-repeat;
+  background: var(--primary-mid) url('https://www.figma.com/api/mcp/asset/2ee4cb96-b28c-4aeb-8faa-1edd95b9ff91') center/cover no-repeat;
 }
 .about-body p {
-  font-size: 18px; color: var(--muted); line-height: 1.6;
+  font-family: var(--font-body); font-size: 18px; color: var(--muted); line-height: 1.6;
 }
 .about-body .btn { margin-top: 38px; }
 .about-body strong { color: var(--ink); font-weight: 700; }
 
-/* ─────────────────────────────────────────
-   STORIES / COACHES
-───────────────────────────────────────── */
+/* ─── STORIES / COACHES ─── */
 .stories-section { padding: clamp(64px, 8vw, 120px) 0; }
 .stories-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px; }
 .stories-head h2 { font-size: clamp(38px, 5.5vw, 96px); letter-spacing: -1.8px; margin-top: 20px; }
@@ -254,19 +258,18 @@ h1,h2,h3,h4 { margin: 0; font-family: var(--font-head); font-weight: 900; line-h
   width: 50px; height: 50px; border-radius: 50%;
   border: 1.5px solid var(--line); background: var(--card);
   display: grid; place-items: center; cursor: pointer; transition: .2s;
-  position: relative;
 }
 .carousel-btn:hover { border-color: var(--secondary); background: var(--secondary); color: var(--primary); }
 .carousel-btn svg { width: 18px; height: 18px; }
 
 .stories-track-wrap { overflow: hidden; }
 .stories-track {
-  display: flex; gap: 20px;
+  display: flex; gap: 27px;
   transition: transform .5s cubic-bezier(.2,.7,.2,1);
 }
 
 .story-card {
-  flex: 0 0 calc(25% - 15px);
+  flex: 0 0 calc(25% - 20.25px);
   min-width: 0;
   border-radius: 16px; overflow: hidden;
   display: flex; flex-direction: column; justify-content: flex-end;
@@ -289,7 +292,7 @@ h1,h2,h3,h4 { margin: 0; font-family: var(--font-head); font-weight: 900; line-h
   background: var(--bg2);
 }
 .story-card__avatar img { width: 100%; height: 100%; object-fit: cover; }
-.story-card__name { font-family: var(--font-head); font-weight: 700; font-size: 20px; color: var(--primary); text-transform: uppercase; line-height: 1.1; }
+.story-card__name { font-family: var(--font-head); font-weight: 700; font-size: 25px; color: var(--primary); text-transform: uppercase; line-height: 1.1; }
 .story-card__tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 10px; }
 .pill {
   border: 1px solid var(--primary); color: var(--primary);
@@ -299,49 +302,53 @@ h1,h2,h3,h4 { margin: 0; font-family: var(--font-head); font-weight: 900; line-h
 }
 .pill--light { border-color: var(--primary-light); color: var(--primary-light); }
 
-/* ─────────────────────────────────────────
-   PROGRAMS
-───────────────────────────────────────── */
+/* ─── PROGRAMS ─── */
 .programs-section {
   background: var(--primary);
-  border-radius: 32px;
-  padding: clamp(50px, 6vw, 90px) var(--pad);
-  color: #fff;
+  position: relative;
+  overflow: hidden;
+  padding: clamp(80px, 9vw, 115px) 0;
 }
-.programs-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px; }
-.programs-head h2 { font-size: clamp(38px, 5.5vw, 80px); color: #fff; margin-top: 20px; }
-.programs-head .eyebrow--light { color: rgba(244,247,250,.85); }
+.programs-section::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: url('https://www.figma.com/api/mcp/asset/979aa832-243b-44fc-9624-634ed2c9eab4') center/cover no-repeat;
+  opacity: .15;
+}
+.programs-inner { position: relative; z-index: 1; }
+.programs-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px; gap: 40px; }
+.programs-head__left { flex-shrink: 0; }
+.programs-head h2 { font-size: clamp(38px, 5.5vw, 96px); color: #f4f7fa; margin-top: 20px; letter-spacing: -1.8px; }
+.programs-head__right {
+  font-size: 20px; font-weight: 600; color: #fff; text-transform: uppercase;
+  text-align: right; max-width: 564px; line-height: 1.4;
+}
 
-/* Segment tabs */
-.seg { display: inline-flex; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14); border-radius: 12px; padding: 5px; }
-.seg__btn { padding: 9px 16px; border-radius: 8px; font-weight: 600; font-size: 14px; color: #5a7184; transition: .2s; text-transform: uppercase; }
-.seg__btn.is-active { background: var(--secondary); color: var(--primary); }
-.seg__btn:hover:not(.is-active) { color: var(--primary-light); }
-
-.pgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 36px; }
+.pgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 27px; }
 
 .prog-card {
   background: var(--primary-mid);
   border-radius: 16px; overflow: hidden;
-  height: 449px; display: flex; flex-direction: column; justify-content: flex-end;
+  height: 479px; display: flex; flex-direction: column; justify-content: flex-end;
   cursor: pointer; transition: transform .35s; position: relative;
 }
 .prog-card:hover { transform: translateY(-6px); }
 .prog-card__img { position: absolute; inset: 0; background: center/cover no-repeat; }
 .prog-card__img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(6,24,40,.92) 15%, rgba(6,24,40,.08) 65%); }
-.prog-card__body { position: relative; z-index: 2; padding: 20px 20px 30px; display: flex; flex-direction: column; gap: 24px; }
+.prog-card__body { position: relative; z-index: 2; padding: 20px 20px 30px; background: var(--primary-mid); display: flex; flex-direction: column; gap: 24px; }
+.prog-card__text { display: flex; flex-direction: column; gap: 12px; min-height: 123px; }
 .prog-card__name { font-family: var(--font-head); font-weight: 700; font-size: 25px; color: #fff; text-transform: uppercase; line-height: 1.1; }
-.prog-card__desc { font-size: 14px; color: rgba(255,255,255,.8); line-height: 1.5; margin-top: 8px; }
+.prog-card__desc { font-family: var(--font-desc); font-size: 14px; color: rgba(255,255,255,.8); line-height: 1.5; }
 .prog-card__foot { display: flex; justify-content: space-between; align-items: center; }
 .prog-card__learn { font-family: var(--font-head); font-weight: 700; font-size: 14px; color: var(--secondary); text-transform: uppercase; }
 
-/* ─────────────────────────────────────────
-   GALLERY
-───────────────────────────────────────── */
+.programs-cta { display: flex; justify-content: center; margin-top: 46px; }
+
+/* ─── GALLERY ─── */
 .gallery-section {
   background: var(--primary);
-  padding: clamp(80px, 9vw, 115px) 0 clamp(80px, 9vw, 115px);
-  margin: 40px 0;
+  padding: clamp(80px, 9vw, 115px) 0;
+  margin: 0;
 }
 .gallery-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px; }
 .gallery-head h2 { font-size: clamp(50px, 6.6vw, 96px); letter-spacing: -1.8px; color: #f4f7fa; margin-top: 20px; }
@@ -356,20 +363,18 @@ h1,h2,h3,h4 { margin: 0; font-family: var(--font-head); font-weight: 900; line-h
 .gallery-tab.is-active { background: var(--primary-light); color: var(--primary); }
 .gallery-tab:hover:not(.is-active) { color: var(--primary-light); }
 
+/* Gallery: exact layout from Figma — tall left cell (h=488) + 2-col grid right */
 .gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 488px 240px 240px;
-  gap: 8px;
+  position: relative;
+  height: 736px;
 }
 .gal-cell {
+  position: absolute;
   border-radius: 16px; overflow: hidden;
   background: var(--primary-mid) center/cover no-repeat;
-  position: relative; cursor: pointer;
-  transition: transform .3s;
+  cursor: pointer; transition: transform .3s;
 }
 .gal-cell:hover { transform: scale(1.01); }
-.gal-cell--tall { grid-row: span 2; }
 .gal-play {
   position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
 }
@@ -381,17 +386,21 @@ h1,h2,h3,h4 { margin: 0; font-family: var(--font-head); font-weight: 900; line-h
 }
 .gal-play__btn svg { width: 20px; height: 20px; margin-left: 3px; }
 
-/* ─────────────────────────────────────────
-   PRODUCTS
-───────────────────────────────────────── */
+/* ─── PRODUCTS ─── */
 .products-section { padding: clamp(64px, 8vw, 120px) 0; }
-.products-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px; }
-.products-head h2 { font-size: clamp(38px, 5.5vw, 80px); letter-spacing: -1.8px; margin-top: 20px; }
-.prod-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.products-head { display: flex; gap: 110px; align-items: flex-end; margin-bottom: 50px; }
+.products-head__left { flex-shrink: 0; }
+.products-head h2 { font-size: clamp(38px, 5.5vw, 96px); letter-spacing: -1.8px; margin-top: 20px; }
+.products-head__right {
+  font-size: 20px; font-weight: 600; color: var(--primary); text-transform: uppercase;
+  text-align: right; flex: 1; line-height: 1.4;
+}
+.prod-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 27px; }
+.products-cta { display: flex; justify-content: center; margin-top: 46px; }
 
 .prod-card {
   border-radius: 16px; overflow: hidden;
-  background: var(--card); border: 1px solid var(--line);
+  background: var(--card);
   display: flex; flex-direction: column; justify-content: flex-end;
   height: 513px; position: relative; cursor: pointer; transition: transform .3s, box-shadow .3s;
 }
@@ -399,41 +408,78 @@ h1,h2,h3,h4 { margin: 0; font-family: var(--font-head); font-weight: 900; line-h
 .prod-card__img { position: absolute; inset: 0; background: center/cover no-repeat; }
 .prod-card__body { position: relative; z-index: 2; background: #fff; padding: 20px 20px 30px; }
 .prod-card__cat { font-family: var(--font-body); font-size: 12px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--primary); }
-.prod-card__name { font-family: var(--font-head); font-weight: 700; font-size: 25px; color: var(--primary); text-transform: uppercase; line-height: 1.1; margin-top: 4px; }
+.prod-card__name { font-family: var(--font-head); font-weight: 700; font-size: 25px; color: var(--primary); text-transform: uppercase; line-height: 1.1; margin-top: 4px; letter-spacing: .5px; }
 .prod-card__foot { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; }
 .prod-card__price { font-family: var(--font-body); font-size: 16px; color: var(--primary); }
 .prod-card__price strong { font-size: 18px; font-weight: 800; }
 .prod-card__link { font-family: var(--font-head); font-weight: 700; font-size: 14px; color: var(--secondary); text-transform: uppercase; }
 
-/* ─────────────────────────────────────────
-   REVIEWS
-───────────────────────────────────────── */
-.reviews-section { padding: clamp(64px, 8vw, 100px) 0; }
-.reviews-head { margin-bottom: 50px; }
-.reviews-head h2 { font-size: clamp(38px, 5.5vw, 80px); letter-spacing: -1.8px; margin-top: 20px; }
-.rev-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+/* ─── REVIEWS ─── */
+.reviews-section { padding: clamp(64px, 8vw, 100px) 0; background: var(--bg); }
+.reviews-head { display: flex; gap: 110px; align-items: flex-end; margin-bottom: 50px; }
+.reviews-head__left { flex-shrink: 0; }
+.reviews-head h2 { font-size: clamp(38px, 5.5vw, 96px); letter-spacing: -1.8px; margin-top: 20px; }
+.reviews-head__right {
+  font-size: 20px; font-weight: 600; color: var(--primary); text-transform: uppercase;
+  text-align: right; flex: 1; line-height: 1.4;
+}
+.rev-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 27px; }
 
 .rev-card {
   background: var(--card); border-radius: 16px; overflow: hidden;
   padding: 30px 20px; height: 530px; display: flex; flex-direction: column; justify-content: space-between;
 }
-.rev-card__quote-mark { width: 60px; margin-bottom: 24px; opacity: .7; }
+.rev-card__quote { width: 60px; height: 45px; margin-bottom: 24px; flex-shrink: 0; }
 .rev-card__text {
   font-family: var(--font-body); font-weight: 600; font-size: 20px;
   color: var(--primary); text-transform: uppercase; line-height: 1.4; flex: 1;
 }
-.rev-card__person { margin-top: 22px; }
-.rev-card__avatar { width: 64px; height: 64px; border-radius: 50%; background: var(--bg2); overflow: hidden; margin-bottom: 12px; }
+.rev-card__person { margin-top: 22px; display: flex; flex-direction: column; gap: 22px; }
+.rev-card__info { display: flex; flex-direction: column; gap: 12px; }
+.rev-card__avatar { width: 64px; height: 64px; border-radius: 50%; background: var(--bg2); overflow: hidden; }
 .rev-card__avatar img { width: 100%; height: 100%; object-fit: cover; }
-.rev-card__name { font-family: var(--font-head); font-weight: 700; font-size: 20px; text-transform: uppercase; color: var(--primary); }
-.rev-card__stars { color: #f5a623; font-size: 16px; letter-spacing: 2px; margin-top: 8px; }
-.rev-card__tag { margin-top: 10px; }
+.rev-card__name { font-family: var(--font-head); font-weight: 700; font-size: 20px; text-transform: uppercase; color: var(--primary); letter-spacing: -.2px; }
+.rev-card__stars { height: 25px; width: 165px; }
+.rev-card__stars img { width: 100%; height: 100%; object-fit: contain; }
 
-/* ─────────────────────────────────────────
-   FOOTER
-───────────────────────────────────────── */
+/* ─── CONTACT / COME TRAIN WITH US ─── */
+.contact-section { padding: clamp(80px, 9vw, 120px) 0; background: var(--bg); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 54px; align-items: start; }
+.contact-head { margin-bottom: 40px; }
+.contact-head h2 { font-size: clamp(38px, 5.5vw, 96px); letter-spacing: -1.8px; line-height: .93; }
+.contact-card {
+  background: var(--primary); border-radius: 18px; padding: 48px;
+  color: #fff; display: flex; flex-direction: column; gap: 28px;
+}
+.contact-item { display: flex; gap: 14px; align-items: flex-start; }
+.contact-item__icon {
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,.2);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.contact-item__icon svg { width: 18px; height: 18px; color: var(--secondary); }
+.contact-item__label { font-family: var(--font-body); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 4px; }
+.contact-item__val { font-size: 15px; color: #fff; line-height: 1.5; }
+.contact-social { display: flex; gap: 10px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,.12); }
+.contact-social a {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.2); display: grid; place-items: center;
+  color: rgba(255,255,255,.6); transition: .2s;
+}
+.contact-social a:hover { border-color: var(--secondary); color: var(--secondary); }
+.contact-social svg { width: 15px; height: 15px; }
+
+.contact-map {
+  border-radius: 16px; overflow: hidden;
+  height: 420px; background: var(--primary-mid);
+  margin-top: 30px;
+}
+.contact-map img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ─── FOOTER ─── */
 .footer-section { padding: 70px 0 40px; border-top: 1px solid var(--line); }
-.foot-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.4fr; gap: 34px; }
+.foot-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; gap: 34px; }
 .foot-brand .brand { margin-bottom: 14px; }
 .foot-brand p { font-size: 14px; color: var(--muted); max-width: 30ch; line-height: 1.7; }
 .foot-col h4 {
@@ -464,22 +510,19 @@ h1,h2,h3,h4 { margin: 0; font-family: var(--font-head); font-weight: 900; line-h
 .sub-form input:focus { outline: none; border-color: var(--secondary); }
 .sub-form .btn { font-size: 14px; padding: 11px 18px 10px; }
 
-/* ─────────────────────────────────────────
-   SCROLL REVEAL
-───────────────────────────────────────── */
+/* ─── SCROLL REVEAL ─── */
 [data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
 [data-reveal].is-in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { [data-reveal] { opacity: 1 !important; transform: none !important; transition: none; } }
 
-/* ─────────────────────────────────────────
-   RESPONSIVE
-───────────────────────────────────────── */
+/* ─── RESPONSIVE ─── */
 @media (max-width: 1100px) {
   .about-grid { grid-template-columns: 1fr 1fr; }
   .about-img { height: 420px; }
   .cta-band__inner { grid-template-columns: 1fr 1px 1fr; }
   .pgrid { grid-template-columns: repeat(2, 1fr); }
-  .gallery-grid { grid-template-rows: 360px 200px 200px; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .foot-grid { grid-template-columns: 1.5fr 1fr 1fr 1fr; }
 }
 @media (max-width: 860px) {
   .nav__links { display: none; }
@@ -487,20 +530,27 @@ h1,h2,h3,h4 { margin: 0; font-family: var(--font-head); font-weight: 900; line-h
   .cta-band__divider { display: none; }
   .about-grid { grid-template-columns: 1fr; }
   .about-section__head { flex-direction: column; align-items: flex-start; }
+  .about-section__head .right { text-align: left; }
   .prod-grid, .rev-grid { grid-template-columns: repeat(2, 1fr); }
   .stats { grid-template-columns: repeat(2, 1fr); }
   .stat:nth-child(2) { border-right: none; }
   .foot-grid { grid-template-columns: 1fr 1fr; }
-  .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
-  .gal-cell--tall { grid-row: span 1; }
-  .programs-head { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .gallery-grid { height: auto !important; position: static !important; display: grid !important; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .gallery-grid .gal-cell { position: static !important; width: auto !important; height: 220px !important; }
+  .programs-head { flex-direction: column; align-items: flex-start; }
+  .programs-head__right { text-align: left; }
+  .products-head { flex-direction: column; gap: 24px; }
+  .products-head__right { text-align: left; }
+  .reviews-head { flex-direction: column; gap: 24px; }
+  .reviews-head__right { text-align: left; }
 }
 @media (max-width: 560px) {
   .prod-grid, .rev-grid, .pgrid { grid-template-columns: 1fr; }
   .stats { grid-template-columns: 1fr; }
   .stat { border-right: none; border-bottom: 1px solid var(--line); }
   .foot-grid { grid-template-columns: 1fr; }
-  .gallery-grid { grid-template-columns: 1fr; }
+  .gallery-grid .gal-cell { height: 180px !important; }
+  .gallery-grid { grid-template-columns: 1fr !important; }
   .trial-form__row { grid-template-columns: 1fr; }
   .nav__cta .btn--ghost { display: none; }
 }
@@ -508,31 +558,26 @@ h1,h2,h3,h4 { margin: 0; font-family: var(--font-head); font-weight: 900; line-h
 </head>
 <body>
 
-<!-- ══════════════════════════════════════
-     NAV / HEADER
-══════════════════════════════════════ -->
+<!-- NAV -->
 <header data-header>
   <div class="wrap nav">
     <a class="brand" href="#">
-      <img src="assets/logo-navy.png" alt="K-Star logo">
+      <img src="https://www.figma.com/api/mcp/asset/ada70ae9-c0c5-4658-a336-5f369c20c934" alt="K-Star logo">
       <span>K-STAR</span>
     </a>
     <nav class="nav__links">
-      <a href="#programs">Discover</a>
       <a href="#about">About</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#contact">Contact</a>
+      <a href="#gallery">Visit</a>
+      <a href="#programs">Activities</a>
     </nav>
     <div class="nav__cta">
-      <a class="btn btn--ghost" href="#book">Book Classes</a>
-      <a class="btn btn--cyan" href="#products">Buy Classes</a>
+      <a class="btn btn--ghost" href="#contact">Sign In</a>
+      <a class="btn btn--cyan" href="#book">Visit Classes</a>
     </div>
   </div>
 </header>
 
-<!-- ══════════════════════════════════════
-     HERO
-══════════════════════════════════════ -->
+<!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero__bg"></div>
   <div class="hero__glow"></div>
@@ -542,16 +587,14 @@ h1,h2,h3,h4 { margin: 0; font-family: var(--font-head); font-weight: 900; line-h
     <p class="hero__sub">World Class Instruction in Martial Arts and Contortion<br>for all ages in Las Vegas.</p>
     <a class="btn btn--cyan" href="#book" style="margin-top: 42px;">Book Your First Class</a>
   </div>
+  <div class="hero__credit">Ulziibayar Chimed</div>
 </section>
 
-<!-- ══════════════════════════════════════
-     BOOK A CLASS — CTA BAND
-══════════════════════════════════════ -->
+<!-- CTA BAND -->
 <div class="wrap" id="book">
   <div class="cta-band" data-reveal>
     <div class="cta-band__inner">
 
-      <!-- Left: headline + view schedule -->
       <div class="cta-band__left">
         <h2>Book a Class Today</h2>
         <p>Pick a program and we'll take you straight to scheduling and checkout.</p>
@@ -560,17 +603,12 @@ h1,h2,h3,h4 { margin: 0; font-family: var(--font-head); font-weight: 900; line-h
 
       <div class="cta-band__divider"></div>
 
-      <!-- Right: form -->
       <div class="cta-band__right">
         <h3>Your first class is on us. Book your trial class NOW.</h3>
         <form class="trial-form" onsubmit="handleBooking(event)">
           <div class="trial-form__row">
-            <div class="tfield">
-              <input type="text" placeholder="First Name" required>
-            </div>
-            <div class="tfield">
-              <input type="text" placeholder="Last Name" required>
-            </div>
+            <div class="tfield"><input type="text" placeholder="First Name" required></div>
+            <div class="tfield"><input type="text" placeholder="Last Name" required></div>
           </div>
           <div class="trial-form__row">
             <div class="tfield">
@@ -585,11 +623,10 @@ h1,h2,h3,h4 { margin: 0; font-family: var(--font-head); font-weight: 900; line-h
           <div class="tfield">
             <select>
               <option value="" disabled selected>Program</option>
-              <option>Martial Arts</option>
-              <option>Contortion</option>
-              <option>Wushu</option>
-              <option>Kids Classes</option>
-              <option>Adult Classes</option>
+              <option>Contortionist</option>
+              <option>Lil Stars</option>
+              <option>Youth Martial Arts</option>
+              <option>Adult Martial Arts</option>
             </select>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8l5 5 5-5"/></svg>
           </div>
@@ -606,9 +643,7 @@ h1,h2,h3,h4 { margin: 0; font-family: var(--font-head); font-weight: 900; line-h
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     STATS STRIP
-══════════════════════════════════════ -->
+<!-- STATS STRIP -->
 <div class="wrap" data-reveal>
   <div class="stats">
     <div class="stat">
@@ -630,15 +665,13 @@ h1,h2,h3,h4 { margin: 0; font-family: var(--font-head); font-weight: 900; line-h
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     ABOUT / ACTIVATE YOUR POTENTIAL
-══════════════════════════════════════ -->
+<!-- ABOUT -->
 <section class="about-section" id="about">
   <div class="wrap">
     <div class="about-section__head" data-reveal>
       <div>
         <span class="eyebrow">Our Story</span>
-        <h2 style="margin-top:20px">Activate Your<br>Potential</h2>
+        <h2 style="margin-top:20px">Activate Your Potential</h2>
       </div>
       <p class="right">Train authentic Martial Arts &amp; Contortion in Las Vegas</p>
     </div>
@@ -659,15 +692,13 @@ h1,h2,h3,h4 { margin: 0; font-family: var(--font-head); font-weight: 900; line-h
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     STORIES / COACHES CAROUSEL
-══════════════════════════════════════ -->
+<!-- STORIES / COACHES -->
 <section class="stories-section">
   <div class="wrap">
     <div class="stories-head" data-reveal>
       <div>
         <span class="eyebrow">From the mat</span>
-        <h2>We have<br>stories to share</h2>
+        <h2>We have stories to share</h2>
       </div>
       <div class="stories-head__right">
         <div class="stories-dots">
@@ -690,12 +721,12 @@ h1,h2,h3,h4 { margin: 0; font-family: var(--font-head); font-weight: 900; line-h
     <div class="stories-track-wrap">
       <div class="stories-track" id="storiesTrack">
 
-        <!-- Coach 1 -->
+        <!-- Coach 1: Ryan Seemore -->
         <div class="story-card">
-          <div class="story-card__img" style="background-image:url('https://www.figma.com/api/mcp/asset/f8d00006-3b3f-4d85-ad34-9b66bbf9b3ee')"></div>
+          <div class="story-card__img" style="background-image:url('https://www.figma.com/api/mcp/asset/53b33d3a-7af5-42b5-a2dd-b6cff947e92e')"></div>
           <div class="story-card__body">
             <div class="story-card__avatar">
-              <img src="https://www.figma.com/api/mcp/asset/7d96eddb-e6f7-42d1-b883-e4a45dd3a203" alt="Ryan Seemore">
+              <img src="https://www.figma.com/api/mcp/asset/9e9e11d2-9c22-4d26-a5cb-7afb542879b2" alt="Ryan Seemore">
             </div>
             <div>
               <div class="story-card__name">Ryan Seemore</div>
@@ -707,51 +738,52 @@ h1,h2,h3,h4 { margin: 0; font-family: var(--font-head); font-weight: 900; line-h
           </div>
         </div>
 
-        <!-- Coach 2 -->
+        <!-- Coach 2: Sarah Mitchell -->
         <div class="story-card">
-          <div class="story-card__img" style="background-image:url('https://www.figma.com/api/mcp/asset/adbe369b-63c9-474a-bdb6-c4ca0d664db5')"></div>
+          <div class="story-card__img" style="background-image:url('https://www.figma.com/api/mcp/asset/d32c804b-c9ae-4ccb-869c-7438e60f7730')"></div>
           <div class="story-card__body">
             <div class="story-card__avatar">
-              <img src="https://www.figma.com/api/mcp/asset/b053d93d-25c9-4021-8a26-296d7ca8d3ca" alt="Coach">
+              <img src="https://www.figma.com/api/mcp/asset/1dc7a547-89fe-45a8-a1e8-e145ce9117bc" alt="Sarah Mitchell">
             </div>
             <div>
-              <div class="story-card__name">Maria Chen</div>
+              <div class="story-card__name">Sarah Mitchell</div>
               <div class="story-card__tags">
-                <span class="pill">Wushu Champion</span>
+                <span class="pill">Personal Trainer</span>
                 <span class="pill">Nutrition Coach</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Coach 3 -->
+        <!-- Coach 3: James Chen -->
         <div class="story-card">
-          <div class="story-card__img" style="background-image:url('https://www.figma.com/api/mcp/asset/f85f2027-9c7b-4dc0-8ce0-71ce1a31acd8')"></div>
+          <div class="story-card__img" style="background-image:url('https://www.figma.com/api/mcp/asset/e33b6a7f-7701-4dcb-aaa4-e15b09645bdb')"></div>
           <div class="story-card__body">
             <div class="story-card__avatar">
-              <img src="https://www.figma.com/api/mcp/asset/7351d17d-954b-4acf-a481-1252cde97dc1" alt="Coach">
+              <img src="https://www.figma.com/api/mcp/asset/2e06292d-a033-4cd5-9456-1233cc0f756b" alt="James Chen">
             </div>
             <div>
-              <div class="story-card__name">Philip Sahagun</div>
+              <div class="story-card__name">James Chen</div>
               <div class="story-card__tags">
-                <span class="pill">Martial Arts Master</span>
-                <span class="pill">Cirque Du Soleil</span>
+                <span class="pill">Pilates Instructor</span>
+                <span class="pill">Physical Therapist</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Coach 4 -->
+        <!-- Coach 4: Maya Rodriguez -->
         <div class="story-card">
-          <div class="story-card__img" style="background-image:url('https://www.figma.com/api/mcp/asset/69c2137e-20fd-4d55-b961-208bed9db3f7')"></div>
+          <div class="story-card__img" style="background-image:url('https://www.figma.com/api/mcp/asset/cf871fe7-3f3e-471a-910e-3fa380c33f5a')"></div>
           <div class="story-card__body">
             <div class="story-card__avatar">
-              <img src="https://www.figma.com/api/mcp/asset/285f3078-fc9f-4776-a0ee-e80d7eafaef0" alt="Coach">
+              <img src="https://www.figma.com/api/mcp/asset/b8513847-7ccd-4418-b0ee-867ac0cf6378" alt="Maya Rodriguez">
             </div>
             <div>
-              <div class="story-card__name">Ulziibayar Chimed</div>
+              <div class="story-card__name">Maya Rodriguez</div>
               <div class="story-card__tags">
-                <span class="pill">Contortion Expert</span>
+                <span class="pill">Mindfulness Coach</span>
+                <span class="pill">Meditation Teacher</span>
               </div>
             </div>
           </div>
@@ -762,92 +794,251 @@ h1,h2,h3,h4 { margin: 0; font-family: var(--font-head); font-weight: 900; line-h
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     PROGRAMS
-══════════════════════════════════════ -->
-<section id="programs">
+<!-- PROGRAMS -->
+<section class="programs-section" id="programs">
+  <div class="wrap programs-inner">
+    <div class="programs-head" data-reveal>
+      <div class="programs-head__left">
+        <span class="eyebrow eyebrow--light">Gear up</span>
+        <h2>Find a perfect<br>program for you</h2>
+      </div>
+      <p class="programs-head__right">Explore a diverse mix of classes and programs tailored to master your potential and vital skills. Try something new, or dive deeper into your favorite practice!</p>
+    </div>
+
+    <div class="pgrid" data-reveal>
+
+      <div class="prog-card">
+        <div class="prog-card__img" style="background-image:url('https://www.figma.com/api/mcp/asset/31d19553-d8b2-49a6-b386-cf7baf4f820e')"></div>
+        <div class="prog-card__body">
+          <div class="prog-card__text">
+            <div class="prog-card__name">Contortionist</div>
+            <div class="prog-card__desc">Increase flexibility, control, and graceful mobility through guided contortion and strength work for every level.</div>
+          </div>
+          <div class="prog-card__foot">
+            <span class="pill pill--light">All ages</span>
+            <span class="prog-card__learn">Learn More</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="prog-card">
+        <div class="prog-card__img" style="background-image:url('https://www.figma.com/api/mcp/asset/8d0a3897-9111-48e4-a635-fca2befa52b8')"></div>
+        <div class="prog-card__body">
+          <div class="prog-card__text">
+            <div class="prog-card__name">Lil Stars</div>
+            <div class="prog-card__desc">An early-learning martial arts class focused on coordination, discipline, confidence, and joyful movement.</div>
+          </div>
+          <div class="prog-card__foot">
+            <span class="pill pill--light">4-6 ages</span>
+            <span class="prog-card__learn">Learn More</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="prog-card">
+        <div class="prog-card__img" style="background-image:url('https://www.figma.com/api/mcp/asset/7fcc3ef5-9140-4edc-ba4a-6fc653d69a0c')"></div>
+        <div class="prog-card__body">
+          <div class="prog-card__text">
+            <div class="prog-card__name">Youth Martial Arts</div>
+            <div class="prog-card__desc">Build strong fundamentals, resilience, and focus through age-specific training that keeps students engaged and challenged.</div>
+          </div>
+          <div class="prog-card__foot">
+            <span class="pill pill--light">7-14 ages</span>
+            <span class="prog-card__learn">Learn More</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="prog-card">
+        <div class="prog-card__img" style="background-image:url('https://www.figma.com/api/mcp/asset/a88782ca-0891-4bc0-a685-838c87712ce1')"></div>
+        <div class="prog-card__body">
+          <div class="prog-card__text">
+            <div class="prog-card__name">Adult Martial Arts</div>
+            <div class="prog-card__desc">We offer a comprehensive education combining techniques from traditional styles such as Wushu, Kung Fu, Karate and more.</div>
+          </div>
+          <div class="prog-card__foot">
+            <span class="pill pill--light">13+ ages</span>
+            <span class="prog-card__learn">Learn More</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="programs-cta" data-reveal>
+      <a class="btn btn--cyan" href="#">Check Class Schedules</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products-section" id="products">
   <div class="wrap">
-    <div class="programs-section" data-reveal>
+    <div class="products-head" data-reveal>
+      <div class="products-head__left">
+        <span class="eyebrow">Our Merch</span>
+        <h2>Check Out<br>Our Products</h2>
+      </div>
+      <p class="products-head__right">We support skill-based businesses of all types of martial arts and dancing. Our platform is adaptable to businesses of any size, whether you have one, multiple, or an organization-sized business. Contact us to find the perfect solution.</p>
+    </div>
+    <div class="prod-grid" data-reveal>
 
-      <div class="programs-head">
-        <div>
-          <span class="eyebrow eyebrow--light">What We Offer</span>
-          <h2>Our Programs</h2>
-        </div>
-        <div class="seg" role="tablist">
-          <button class="seg__btn is-active" data-prog="all">All</button>
-          <button class="seg__btn" data-prog="kids">Kids</button>
-          <button class="seg__btn" data-prog="adults">Adults</button>
-          <button class="seg__btn" data-prog="elite">Elite</button>
+      <div class="prod-card">
+        <div class="prod-card__img" style="background-image:url('https://www.figma.com/api/mcp/asset/3de8ac33-47f1-442a-bafb-876d24c46a64'); background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #fff;"></div>
+        <div class="prod-card__body">
+          <div class="prod-card__cat">Equipment</div>
+          <div class="prod-card__name">Kids' Karate GI Uniform</div>
+          <div class="prod-card__foot">
+            <div class="prod-card__price">From <strong>$ 10.99</strong></div>
+            <span class="prod-card__link">View Details</span>
+          </div>
         </div>
       </div>
 
-      <div class="pgrid" id="progGrid">
-
-        <div class="prog-card">
-          <div class="prog-card__img" style="background-image:url('https://www.figma.com/api/mcp/asset/f7fbaeb4-40dc-420f-878f-99d186f68b28')"></div>
-          <div class="prog-card__body">
-            <div>
-              <div class="prog-card__name">Contortionist</div>
-              <div class="prog-card__desc">Increase flexibility, control, and graceful mobility through guided contortion and strength work for every level.</div>
-            </div>
-            <div class="prog-card__foot">
-              <span class="pill pill--light">All ages</span>
-              <span class="prog-card__learn">Learn More →</span>
-            </div>
+      <div class="prod-card">
+        <div class="prod-card__img" style="background-image:url('https://www.figma.com/api/mcp/asset/0c4f04d1-edd7-47d6-bfec-909d6315bac0'); background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #f5f5f5;"></div>
+        <div class="prod-card__body">
+          <div class="prod-card__cat">Equipment</div>
+          <div class="prod-card__name">Martial Arts Mouthguard</div>
+          <div class="prod-card__foot">
+            <div class="prod-card__price">From <strong>$ 5.59</strong></div>
+            <span class="prod-card__link">View Details</span>
           </div>
         </div>
-
-        <div class="prog-card">
-          <div class="prog-card__img" style="background-image:url('https://www.figma.com/api/mcp/asset/8fa95643-826c-4c9e-8928-72ebc0a3c817')"></div>
-          <div class="prog-card__body">
-            <div>
-              <div class="prog-card__name">Wushu</div>
-              <div class="prog-card__desc">Train in the art of Chinese martial arts, blending athleticism, discipline and artistic expression.</div>
-            </div>
-            <div class="prog-card__foot">
-              <span class="pill pill--light">All ages</span>
-              <span class="prog-card__learn">Learn More →</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="prog-card">
-          <div class="prog-card__img" style="background-image:url('https://www.figma.com/api/mcp/asset/fd818a17-088c-4b92-a871-8cebf9be6c1e')"></div>
-          <div class="prog-card__body">
-            <div>
-              <div class="prog-card__name">Martial Arts</div>
-              <div class="prog-card__desc">Develop strength, focus and confidence through authentic martial arts training for all skill levels.</div>
-            </div>
-            <div class="prog-card__foot">
-              <span class="pill pill--light">Kids &amp; Adults</span>
-              <span class="prog-card__learn">Learn More →</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="prog-card">
-          <div class="prog-card__img" style="background-image:url('https://www.figma.com/api/mcp/asset/4e939f97-c51a-481c-8020-f0eee24c59d4')"></div>
-          <div class="prog-card__body">
-            <div>
-              <div class="prog-card__name">Kids Elite</div>
-              <div class="prog-card__desc">An advanced program for young athletes ready to push their limits and compete at the highest level.</div>
-            </div>
-            <div class="prog-card__foot">
-              <span class="pill pill--light">Ages 6–17</span>
-              <span class="prog-card__learn">Learn More →</span>
-            </div>
-          </div>
-        </div>
-
       </div>
+
+      <div class="prod-card">
+        <div class="prod-card__img" style="background-image:url('https://www.figma.com/api/mcp/asset/b69dbad7-72cc-449f-9c98-3511144cbb4c'); background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #f4f4f4;"></div>
+        <div class="prod-card__body">
+          <div class="prod-card__cat">Equipment</div>
+          <div class="prod-card__name">Training Nunchucks</div>
+          <div class="prod-card__foot">
+            <div class="prod-card__price">From <strong>$ 39.99</strong></div>
+            <span class="prod-card__link">View Details</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card">
+        <div class="prod-card__img" style="background-image:url('https://www.figma.com/api/mcp/asset/c10afdfb-24bd-4937-a2d8-14da4e8d80a1'); background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #f4f4f4;"></div>
+        <div class="prod-card__body">
+          <div class="prod-card__cat">Equipment</div>
+          <div class="prod-card__name">Boxing Gloves - Red</div>
+          <div class="prod-card__foot">
+            <div class="prod-card__price">From <strong>$ 29.99</strong></div>
+            <span class="prod-card__link">View Details</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="products-cta" data-reveal>
+      <a class="btn btn--dark" href="#">View All →</a>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     GALLERY
-══════════════════════════════════════ -->
+<!-- REVIEWS -->
+<section class="reviews-section">
+  <div class="wrap">
+    <div class="reviews-head" data-reveal>
+      <div class="reviews-head__left">
+        <span class="eyebrow">What They're Saying</span>
+        <h2>See Our<br>Customer Reviews</h2>
+      </div>
+      <p class="reviews-head__right">See why our classes keep earning 5 Star Reviews</p>
+    </div>
+    <div class="rev-grid" data-reveal>
+
+      <div class="rev-card">
+        <div>
+          <img class="rev-card__quote" src="https://www.figma.com/api/mcp/asset/082ea08a-f220-4008-bb75-6b7d0c53cf16" alt="">
+          <p class="rev-card__text">The coaching is on another level. Real working pros who actually break the movement down.</p>
+        </div>
+        <div class="rev-card__person">
+          <div class="rev-card__info">
+            <div class="rev-card__avatar">
+              <img src="https://www.figma.com/api/mcp/asset/cd6f7ed6-f82b-4495-9519-2133d63bab31" alt="Don Williams">
+            </div>
+            <div>
+              <div class="rev-card__name">Don Williams</div>
+              <div class="rev-card__tag" style="margin-top:10px"><span class="pill">Wushu Master</span></div>
+            </div>
+          </div>
+          <div class="rev-card__stars">
+            <img src="https://www.figma.com/api/mcp/asset/4c7f87ae-f0e7-4ae8-a78b-480abfbc68ba" alt="5 stars">
+          </div>
+        </div>
+      </div>
+
+      <div class="rev-card">
+        <div>
+          <img class="rev-card__quote" src="https://www.figma.com/api/mcp/asset/082ea08a-f220-4008-bb75-6b7d0c53cf16" alt="">
+          <p class="rev-card__text">Philip has this rare ability to meet you where you are and push you further than you thought possible.</p>
+        </div>
+        <div class="rev-card__person">
+          <div class="rev-card__info">
+            <div class="rev-card__avatar">
+              <img src="https://www.figma.com/api/mcp/asset/3cb31459-e1c4-4c6c-916c-3057f93212d7" alt="Alicia Bennet">
+            </div>
+            <div>
+              <div class="rev-card__name">Alicia Bennet</div>
+              <div class="rev-card__tag" style="margin-top:10px"><span class="pill">Dance Trainer</span></div>
+            </div>
+          </div>
+          <div class="rev-card__stars">
+            <img src="https://www.figma.com/api/mcp/asset/4c7f87ae-f0e7-4ae8-a78b-480abfbc68ba" alt="5 stars">
+          </div>
+        </div>
+      </div>
+
+      <div class="rev-card">
+        <div>
+          <img class="rev-card__quote" src="https://www.figma.com/api/mcp/asset/b482a1f6-5fe4-4bea-9af6-ec301464186b" alt="">
+          <p class="rev-card__text">I've tried so many programs but nothing compares. My flexibility and rhythm improved in just weeks.</p>
+        </div>
+        <div class="rev-card__person">
+          <div class="rev-card__info">
+            <div class="rev-card__avatar">
+              <img src="https://www.figma.com/api/mcp/asset/4ba05b05-33f5-4e9e-b547-572f31ba9936" alt="Priya Nandha">
+            </div>
+            <div>
+              <div class="rev-card__name">Priya Nandha</div>
+              <div class="rev-card__tag" style="margin-top:10px"><span class="pill">Yoga Instructor</span></div>
+            </div>
+          </div>
+          <div class="rev-card__stars">
+            <img src="https://www.figma.com/api/mcp/asset/4c7f87ae-f0e7-4ae8-a78b-480abfbc68ba" alt="5 stars">
+          </div>
+        </div>
+      </div>
+
+      <div class="rev-card">
+        <div>
+          <img class="rev-card__quote" src="https://www.figma.com/api/mcp/asset/b482a1f6-5fe4-4bea-9af6-ec301464186b" alt="">
+          <p class="rev-card__text">Finally a platform that takes technique seriously. And the community keeps you motivated.</p>
+        </div>
+        <div class="rev-card__person">
+          <div class="rev-card__info">
+            <div class="rev-card__avatar">
+              <img src="https://www.figma.com/api/mcp/asset/e40c3df8-d31a-4c87-8818-2c0ae5b89826" alt="Marcus Webb">
+            </div>
+            <div>
+              <div class="rev-card__name">Marcus Webb</div>
+              <div class="rev-card__tag" style="margin-top:10px"><span class="pill">Fitness Coach</span></div>
+            </div>
+          </div>
+          <div class="rev-card__stars">
+            <img src="https://www.figma.com/api/mcp/asset/4c7f87ae-f0e7-4ae8-a78b-480abfbc68ba" alt="5 stars">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
 <section class="gallery-section" id="gallery">
   <div class="wrap">
     <div class="gallery-head" data-reveal>
@@ -864,196 +1055,101 @@ h1,h2,h3,h4 { margin: 0; font-family: var(--font-head); font-weight: 900; line-h
       </div>
     </div>
 
-    <div class="gallery-grid" id="galleryGrid" data-reveal>
-      <div class="gal-cell gal-cell--tall" style="background-image:url('https://www.figma.com/api/mcp/asset/e6c0a61c-56c1-405d-9336-f445260b81b0')"></div>
-      <div class="gal-cell" style="background-image:url('https://www.figma.com/api/mcp/asset/0ddae4cb-9ad1-4ba4-b42f-929ac549823f')"></div>
-      <div class="gal-cell" style="background-image:url('https://www.figma.com/api/mcp/asset/e8490efd-f94a-41e2-896d-6bd2381ec827')">
-        <div class="gal-play">
-          <div class="gal-play__btn">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v14l11-7-11-7z"/></svg>
-          </div>
-        </div>
+    <!-- Exact Figma layout: 1 tall left (488px h, 446px w) + 2×3 grid right at 8px gaps -->
+    <div class="gallery-grid" data-reveal style="height:736px; position:relative;">
+      <!-- Left tall cell -->
+      <div class="gal-cell" style="left:0; top:0; width:446px; height:488px; background-image:url('https://www.figma.com/api/mcp/asset/3202f3bc-2550-464a-bc4e-93971acae3bd')"></div>
+      <!-- Row 1 middle -->
+      <div class="gal-cell" style="left:454px; top:0; width:446px; height:240px; background-image:url('https://www.figma.com/api/mcp/asset/74995956-9b97-4e62-9ebe-6d62abc3c84e')"></div>
+      <!-- Row 1 right (video) -->
+      <div class="gal-cell" style="left:908px; top:0; width:446px; height:240px; background-image:url('https://www.figma.com/api/mcp/asset/80d2e678-c5a2-49e0-800a-a924779bb610')">
+        <div class="gal-play"><div class="gal-play__btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v14l11-7-11-7z"/></svg></div></div>
       </div>
-      <div class="gal-cell" style="background-image:url('https://www.figma.com/api/mcp/asset/52466e7c-cba6-46a6-9785-bfa55aa81542')"></div>
-      <div class="gal-cell" style="background-image:url('https://www.figma.com/api/mcp/asset/e92f549e-f490-42df-8be7-a591c0cb6c2d')">
-        <div class="gal-play">
-          <div class="gal-play__btn">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v14l11-7-11-7z"/></svg>
-          </div>
-        </div>
+      <!-- Row 2 middle -->
+      <div class="gal-cell" style="left:454px; top:248px; width:446px; height:240px; background-image:url('https://www.figma.com/api/mcp/asset/9ac0446f-7fd1-46a9-8dad-6cbc5364d91f')"></div>
+      <!-- Row 2 right (video) -->
+      <div class="gal-cell" style="left:908px; top:248px; width:446px; height:240px; background-image:url('https://www.figma.com/api/mcp/asset/b4e9e91d-db79-4a53-9ece-366ad490874a')">
+        <div class="gal-play"><div class="gal-play__btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v14l11-7-11-7z"/></svg></div></div>
       </div>
-      <div class="gal-cell" style="background-image:url('https://www.figma.com/api/mcp/asset/3e1768e9-6017-4044-9ed7-0d7dc90813e8')">
-        <div class="gal-play">
-          <div class="gal-play__btn">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v14l11-7-11-7z"/></svg>
-          </div>
-        </div>
+      <!-- Row 3 left -->
+      <div class="gal-cell" style="left:0; top:496px; width:446px; height:240px; background-image:url('https://www.figma.com/api/mcp/asset/2aa48e54-54e0-420c-b368-25bf97a68e3d')"></div>
+      <!-- Row 3 middle (video) -->
+      <div class="gal-cell" style="left:454px; top:496px; width:446px; height:240px; background-image:url('https://www.figma.com/api/mcp/asset/744afa9c-dc43-448e-b5a1-5fb632d9cd47')">
+        <div class="gal-play"><div class="gal-play__btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v14l11-7-11-7z"/></svg></div></div>
       </div>
-      <div class="gal-cell" style="background-image:url('https://www.figma.com/api/mcp/asset/d4b1214c-70f7-4e5d-adfc-36828505e328')"></div>
-      <div class="gal-cell" style="background-image:url('https://www.figma.com/api/mcp/asset/5926f665-69f0-4953-9157-650640b87549')"></div>
+      <!-- Row 3 right -->
+      <div class="gal-cell" style="left:908px; top:496px; width:446px; height:240px; background-image:url('https://www.figma.com/api/mcp/asset/2edde630-c45e-46dc-866a-def5c69a352f')"></div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     PRODUCTS
-══════════════════════════════════════ -->
-<section class="products-section" id="products">
+<!-- COME TRAIN WITH US -->
+<section class="contact-section" id="contact">
   <div class="wrap">
-    <div class="products-head" data-reveal>
+    <div class="contact-grid">
       <div>
-        <span class="eyebrow">Our Store</span>
-        <h2>Equipment &amp;<br>Gear</h2>
-      </div>
-      <a class="btn btn--dark" href="#">View All Products</a>
-    </div>
-    <div class="prod-grid" data-reveal>
-
-      <div class="prod-card">
-        <div class="prod-card__img" style="background-image:url('https://www.figma.com/api/mcp/asset/71b081d9-f79d-450b-b284-a1525f87cacd')"></div>
-        <div class="prod-card__body">
-          <div class="prod-card__cat">Equipment</div>
-          <div class="prod-card__name">Kids' Karate GI Uniform</div>
-          <div class="prod-card__foot">
-            <div class="prod-card__price">From <strong>$10.99</strong></div>
-            <span class="prod-card__link">View Details</span>
+        <div class="contact-head" data-reveal>
+          <span class="eyebrow">Our Locations</span>
+          <h2 style="margin-top:20px">Come Train<br>With Us</h2>
+        </div>
+        <div class="contact-card" data-reveal>
+          <div class="contact-item">
+            <div class="contact-item__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.8 19.8 0 01-3.07-8.6A2 2 0 012 0h3a2 2 0 012 1.72 12.8 12.8 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.8 12.8 0 002.81.7A2 2 0 0122 14v2.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact-item__label">Phone</div>
+              <div class="contact-item__val">+1 (725) 232-8762</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+            </div>
+            <div>
+              <div class="contact-item__label">Email</div>
+              <div class="contact-item__val">info@kstartraining.com</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="contact-item__label">Address</div>
+              <div class="contact-item__val">5760 Centennial Center Blvd,<br>Las Vegas NV 89149</div>
+            </div>
+          </div>
+          <div class="contact-social">
+            <a href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="#" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="#" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12a4 4 0 104 4V4a5 5 0 005 5"/></svg>
+            </a>
+            <a href="#" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75,15.02 15.5,12 9.75,8.98 9.75,15.02" fill="currentColor" stroke="none"/></svg>
+            </a>
           </div>
         </div>
       </div>
-
-      <div class="prod-card">
-        <div class="prod-card__img" style="background-image:url('https://www.figma.com/api/mcp/asset/97593191-ed60-49bc-9c49-a817705b356b')"></div>
-        <div class="prod-card__body">
-          <div class="prod-card__cat">Equipment</div>
-          <div class="prod-card__name">Wushu Training Sword</div>
-          <div class="prod-card__foot">
-            <div class="prod-card__price">From <strong>$24.99</strong></div>
-            <span class="prod-card__link">View Details</span>
-          </div>
-        </div>
+      <div class="contact-map" data-reveal>
+        <img src="https://www.figma.com/api/mcp/asset/ecf34624-27fe-4f3c-98d3-c48aa925d8ef" alt="Map — K-Star Training Academy">
       </div>
-
-      <div class="prod-card">
-        <div class="prod-card__img" style="background-image:url('https://www.figma.com/api/mcp/asset/c9124aa4-ed5b-4273-b6a4-dede84673f3e')"></div>
-        <div class="prod-card__body">
-          <div class="prod-card__cat">Apparel</div>
-          <div class="prod-card__name">K-Star Training Gi</div>
-          <div class="prod-card__foot">
-            <div class="prod-card__price">From <strong>$34.99</strong></div>
-            <span class="prod-card__link">View Details</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="prod-card">
-        <div class="prod-card__img" style="background-image:url('https://www.figma.com/api/mcp/asset/434b131a-e42f-4735-bd72-963f9046905f')"></div>
-        <div class="prod-card__body">
-          <div class="prod-card__cat">Accessories</div>
-          <div class="prod-card__name">Contortion Training Mat</div>
-          <div class="prod-card__foot">
-            <div class="prod-card__price">From <strong>$49.99</strong></div>
-            <span class="prod-card__link">View Details</span>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     REVIEWS
-══════════════════════════════════════ -->
-<section class="reviews-section">
-  <div class="wrap">
-    <div class="reviews-head" data-reveal>
-      <span class="eyebrow">What They Say</span>
-      <h2>Student<br>Reviews</h2>
-    </div>
-    <div class="rev-grid" data-reveal>
-
-      <div class="rev-card">
-        <div>
-          <!-- Quote mark SVG -->
-          <svg class="rev-card__quote-mark" viewBox="0 0 60 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 45V28.125C0 12.656 9.375 3.75 28.125 0L32.25 6.75C23.25 8.625 17.625 13.125 15.375 20.25H26.25V45H0ZM33.75 45V28.125C33.75 12.656 43.125 3.75 61.875 0L66 6.75C57 8.625 51.375 13.125 49.125 20.25H60V45H33.75Z" fill="#0a1e30" opacity=".15"/>
-          </svg>
-          <p class="rev-card__text">The coaching is on another level. Real working pros who actually break the movement down.</p>
-        </div>
-        <div class="rev-card__person">
-          <div class="rev-card__avatar">
-            <img src="https://www.figma.com/api/mcp/asset/a489d955-03b4-4607-a1f2-76f34a83e039" alt="Don Williams">
-          </div>
-          <div class="rev-card__name">Don Williams</div>
-          <div class="rev-card__stars">★★★★★</div>
-          <div class="rev-card__tag"><span class="pill">Wushu Master</span></div>
-        </div>
-      </div>
-
-      <div class="rev-card">
-        <div>
-          <svg class="rev-card__quote-mark" viewBox="0 0 60 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 45V28.125C0 12.656 9.375 3.75 28.125 0L32.25 6.75C23.25 8.625 17.625 13.125 15.375 20.25H26.25V45H0ZM33.75 45V28.125C33.75 12.656 43.125 3.75 61.875 0L66 6.75C57 8.625 51.375 13.125 49.125 20.25H60V45H33.75Z" fill="#0a1e30" opacity=".15"/>
-          </svg>
-          <p class="rev-card__text">My kids have transformed so much since joining. The instructors genuinely care about every student's progress.</p>
-        </div>
-        <div class="rev-card__person">
-          <div class="rev-card__avatar">
-            <img src="https://www.figma.com/api/mcp/asset/4b881f48-92eb-4698-aa97-630d7ef64c96" alt="Sarah M.">
-          </div>
-          <div class="rev-card__name">Sarah M.</div>
-          <div class="rev-card__stars">★★★★★</div>
-          <div class="rev-card__tag"><span class="pill">Parent</span></div>
-        </div>
-      </div>
-
-      <div class="rev-card">
-        <div>
-          <svg class="rev-card__quote-mark" viewBox="0 0 60 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 45V28.125C0 12.656 9.375 3.75 28.125 0L32.25 6.75C23.25 8.625 17.625 13.125 15.375 20.25H26.25V45H0ZM33.75 45V28.125C33.75 12.656 43.125 3.75 61.875 0L66 6.75C57 8.625 51.375 13.125 49.125 20.25H60V45H33.75Z" fill="#0a1e30" opacity=".15"/>
-          </svg>
-          <p class="rev-card__text">I started with zero experience. Now I'm competing in regional events. This academy changes lives.</p>
-        </div>
-        <div class="rev-card__person">
-          <div class="rev-card__avatar">
-            <img src="https://www.figma.com/api/mcp/asset/80df0fc6-bc8b-4394-9896-2dfb674d168b" alt="James T.">
-          </div>
-          <div class="rev-card__name">James T.</div>
-          <div class="rev-card__stars">★★★★★</div>
-          <div class="rev-card__tag"><span class="pill">Adult Student</span></div>
-        </div>
-      </div>
-
-      <div class="rev-card">
-        <div>
-          <svg class="rev-card__quote-mark" viewBox="0 0 60 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 45V28.125C0 12.656 9.375 3.75 28.125 0L32.25 6.75C23.25 8.625 17.625 13.125 15.375 20.25H26.25V45H0ZM33.75 45V28.125C33.75 12.656 43.125 3.75 61.875 0L66 6.75C57 8.625 51.375 13.125 49.125 20.25H60V45H33.75Z" fill="#0a1e30" opacity=".15"/>
-          </svg>
-          <p class="rev-card__text">Absolute world-class facility and training. Philip and his team are former Cirque performers — it shows in every class.</p>
-        </div>
-        <div class="rev-card__person">
-          <div class="rev-card__avatar">
-            <img src="https://www.figma.com/api/mcp/asset/17b1f090-da21-4284-8780-866728e664f7" alt="Lisa K.">
-          </div>
-          <div class="rev-card__name">Lisa K.</div>
-          <div class="rev-card__stars">★★★★★</div>
-          <div class="rev-card__tag"><span class="pill">Advanced Student</span></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════
-     FOOTER
-══════════════════════════════════════ -->
-<footer class="footer-section" id="contact">
+<!-- FOOTER -->
+<footer class="footer-section">
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
         <a class="brand" href="#">
-          <img src="assets/logo-navy.png" alt="K-Star logo">
+          <img src="https://www.figma.com/api/mcp/asset/ada70ae9-c0c5-4658-a336-5f369c20c934" alt="K-Star logo">
           <span>K-STAR</span>
         </a>
         <p>World Class Instruction in Martial Arts and Contortion for all ages in Las Vegas, NV.</p>
@@ -1063,11 +1159,18 @@ h1,h2,h3,h4 { margin: 0; font-family: var(--font-head); font-weight: 900; line-h
         </div>
       </div>
       <div class="foot-col">
-        <h4>Explore</h4>
+        <h4>Visits</h4>
         <a href="#programs">Programs</a>
         <a href="#about">About Us</a>
         <a href="#gallery">Gallery</a>
         <a href="#products">Store</a>
+      </div>
+      <div class="foot-col">
+        <h4>Activities</h4>
+        <a href="#">Contortionist</a>
+        <a href="#">Lil Stars</a>
+        <a href="#">Youth Martial Arts</a>
+        <a href="#">Adult Martial Arts</a>
       </div>
       <div class="foot-col">
         <h4>Support</h4>
@@ -1077,11 +1180,10 @@ h1,h2,h3,h4 { margin: 0; font-family: var(--font-head); font-weight: 900; line-h
         <a href="#">Membership</a>
       </div>
       <div class="foot-col">
-        <h4>Follow Us</h4>
-        <a href="#">Instagram</a>
-        <a href="#">Facebook</a>
-        <a href="#">TikTok</a>
-        <a href="#">YouTube</a>
+        <h4>Locations</h4>
+        <a href="#">Las Vegas, NV</a>
+        <a href="#">Centennial Center</a>
+        <a href="#">Directions</a>
       </div>
     </div>
     <div class="foot-bottom">
@@ -1101,51 +1203,41 @@ h1,h2,h3,h4 { margin: 0; font-family: var(--font-head); font-weight: 900; line-h
   </div>
 </footer>
 
-<!-- ══════════════════════════════════════
-     JAVASCRIPT
-══════════════════════════════════════ -->
-<script src="assets/interactions.js" defer></script>
 <script>
-/* ─── Sticky nav ─── */
+/* Sticky nav */
 const header = document.querySelector('[data-header]');
-const observer = new IntersectionObserver(([e]) => {
+const heroObs = new IntersectionObserver(([e]) => {
   header.classList.toggle('is-stuck', !e.isIntersecting);
 }, { threshold: 0, rootMargin: '-1px 0px 0px 0px' });
-observer.observe(document.getElementById('hero'));
+heroObs.observe(document.getElementById('hero'));
 
-/* ─── Scroll reveal ─── */
+/* Scroll reveal */
 const revObserver = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); revObserver.unobserve(e.target); } });
 }, { threshold: 0.08 });
 document.querySelectorAll('[data-reveal]').forEach(el => revObserver.observe(el));
 
-/* ─── Stories carousel ─── */
+/* Stories carousel */
 (function () {
   const track = document.getElementById('storiesTrack');
+  if (!track) return;
   const cards = track.querySelectorAll('.story-card');
   const dots = document.querySelectorAll('.stories-dots__dot');
   let cur = 0;
   const total = cards.length;
-  const visible = Math.floor(track.parentElement.offsetWidth / (track.parentElement.offsetWidth / 4));
 
   function go(idx) {
     cur = (idx + total) % total;
-    const pct = (cur / total) * 100;
-    track.style.transform = `translateX(-${pct}%)`;
-    track.style.width = `${total * 25}%`;
-    cards.forEach(c => { c.style.width = `calc(${100 / total}% - 15px)`; });
+    const cardW = track.parentElement.offsetWidth / 4;
+    track.style.transform = `translateX(-${cur * (cardW + 27)}px)`;
     dots.forEach((d, i) => d.classList.toggle('is-active', i === cur));
   }
 
   document.getElementById('storiesNext').addEventListener('click', () => go(cur + 1));
   document.getElementById('storiesPrev').addEventListener('click', () => go(cur - 1));
-
-  // init sizing
-  track.style.width = `${total * 25}%`;
-  cards.forEach(c => { c.style.width = `calc(${100 / total}% - 15px)`; c.style.flexShrink = '0'; });
 })();
 
-/* ─── Gallery tabs ─── */
+/* Gallery tabs */
 document.querySelectorAll('.gallery-tab').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.gallery-tab').forEach(b => b.classList.remove('is-active'));
@@ -1153,15 +1245,7 @@ document.querySelectorAll('.gallery-tab').forEach(btn => {
   });
 });
 
-/* ─── Programs seg tabs ─── */
-document.querySelectorAll('.seg__btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.seg__btn').forEach(b => b.classList.remove('is-active'));
-    btn.classList.add('is-active');
-  });
-});
-
-/* ─── Booking form ─── */
+/* Booking form */
 function handleBooking(e) {
   e.preventDefault();
   const btn = e.target.querySelector('[type=submit]');
